@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Components/MyColors.dart';
 import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 import 'package:rive/rive.dart';
+
+///
+/// MaintenancePanel_D is Used For Desktop View
+///
 
 class MaintenancePanel_D extends StatefulWidget {
   const MaintenancePanel_D({Key? key}) : super(key: key);
@@ -102,6 +105,10 @@ class _MaintenancePanel_DState extends State<MaintenancePanel_D> {
   }
 }
 
+///
+/// MaintenancePanel_T is Used For Tablet View
+///
+
 class MaintenancePanel_T extends StatefulWidget {
   const MaintenancePanel_T({Key? key}) : super(key: key);
 
@@ -183,10 +190,10 @@ class _MaintenancePanel_TState extends State<MaintenancePanel_T> {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.only(top: 100),
+              margin: EdgeInsets.only(top: 50),
               child: Text(
                 "SITE IS UNDER\nMAINTENANCE.",
-                style: Fonts.gRubik(72, MyColor.blackFont, FontWeight.bold),
+                style: Fonts.gRubik(64, MyColor.blackFont, FontWeight.bold),
               ),
             ),
           )
@@ -195,6 +202,10 @@ class _MaintenancePanel_TState extends State<MaintenancePanel_T> {
     );
   }
 }
+
+///
+/// MaintenancePanel_M is Used For Mobile View
+///
 
 class MaintenancePanel_M extends StatefulWidget {
   const MaintenancePanel_M({Key? key}) : super(key: key);
@@ -221,9 +232,8 @@ class _MaintenancePanel_MState extends State<MaintenancePanel_M> {
           Align(
             alignment: Alignment.center,
             child: Container(
-              height: 600,
-              width: 600,
-              margin: EdgeInsets.all(50),
+              height: 500,
+              width: 500,
               //color: Colors.red,
               child: Stack(
                 children: [
@@ -232,19 +242,19 @@ class _MaintenancePanel_MState extends State<MaintenancePanel_M> {
                       child: RiveAnimation.asset('maintenance.riv')),
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.only(
-                        bottom: (borderMargin / 2) - 60, left: 10),
+                    margin:
+                        EdgeInsets.only(bottom: (borderMargin / 2), left: 10),
                     child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         text: 'UNDER\n',
                         style: Fonts.gRubik(
-                            18, MyColor.blackFont, FontWeight.bold),
+                            24, MyColor.blackFont, FontWeight.bold),
                         children: <TextSpan>[
                           TextSpan(
                             text: 'CONSTRUCTION',
                             style: Fonts.gRubik(
-                                14, MyColor.blackFont, FontWeight.bold),
+                                18, MyColor.blackFont, FontWeight.bold),
                           ),
                         ],
                       ),
@@ -252,7 +262,7 @@ class _MaintenancePanel_MState extends State<MaintenancePanel_M> {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.only(top: 110, left: 102),
+                    margin: EdgeInsets.only(top: 110, left: 135),
                     child: Text(
                       "!",
                       style:

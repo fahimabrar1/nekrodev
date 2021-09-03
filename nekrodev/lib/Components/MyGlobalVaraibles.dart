@@ -1,4 +1,5 @@
 typedef setBool(bool);
+typedef voidMethod();
 
 double borderMargin = 300;
 double sideBorderMargin = 90;

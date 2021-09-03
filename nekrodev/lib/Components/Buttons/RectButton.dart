@@ -7,7 +7,12 @@ import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 class RectButton extends StatefulWidget {
   final String title;
   final EdgeInsets padding;
-  const RectButton({required this.title, required this.padding, Key? key})
+  final voidMethod alertdialogue;
+  const RectButton(
+      {required this.title,
+      required this.alertdialogue,
+      required this.padding,
+      Key? key})
       : super(key: key);
 
   @override
@@ -26,6 +31,7 @@ class _RectButtonState extends State<RectButton> {
         child: new InkWell(
           borderRadius: BorderRadius.circular(cardBorderRadius),
           onTap: () {
+            widget.alertdialogue();
             print("tapped");
           },
           child: new Container(

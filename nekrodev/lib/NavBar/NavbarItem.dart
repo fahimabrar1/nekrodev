@@ -49,9 +49,9 @@ class _NavbarItemState extends State<NavbarItem> {
                             widget.title,
                             style: hover
                                 ? Fonts.gRubik(
-                                    16, MyColor.blackFont, FontWeight.normal)
+                                    18, MyColor.blackFont, FontWeight.normal)
                                 : Fonts.gRubik(
-                                    14, MyColor.blackFont, FontWeight.normal),
+                                    16, MyColor.blackFont, FontWeight.normal),
                           ),
                           AnimatedContainer(
                             duration: Duration(milliseconds: navmarAnimTime),
