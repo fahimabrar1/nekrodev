@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nekrodev/Components/Footer/Footer.dart';
+import 'package:nekrodev/Components/Panels/AdvancedInnovation.dart';
+import 'package:nekrodev/Components/Panels/ServicesPanel.dart';
+import 'package:nekrodev/Components/Panels/WhoWeArePanel.dart';
 import 'package:nekrodev/NavBar/NavBars.dart';
-import 'package:nekrodev/Responsive/Responsive.dart';
 
 /// HomePage is the Landing Page
 /// It is a Single Page
@@ -17,14 +20,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        NavBarResponsive(),
-        Container(
-          height: 500,
-          color: Colors.amber,
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          NavBarResponsive(),
+          AdvancedInnovationResponsive(),
+          WhoWeArePanel(),
+          ServicesPanel(),
+          Footer(),
+        ],
+      ),
     );
   }
 }

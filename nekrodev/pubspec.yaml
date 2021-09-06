@@ -52,6 +52,10 @@ flutter:
   assets:
     - assets/images/maintenance_bg.png
     - assets/images/maintenance_cone.png
+    - assets/images/pexels1.jpeg
+    - assets/images/pexels2.jpeg
+    - assets/images/pexels3.jpeg
+    - assets/images/pexels4.jpeg
     - assets/maintenance.riv
   #   - images/a_dot_ham.jpeg
 

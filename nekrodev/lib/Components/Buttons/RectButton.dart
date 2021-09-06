@@ -6,12 +6,18 @@ import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 
 class RectButton extends StatefulWidget {
   final String title;
+  final double FontSize;
   final EdgeInsets padding;
-  final voidMethod alertdialogue;
+  final voidMethod? alertdialogue;
+  final Color fontColor;
+  final Color backgroundColor;
   const RectButton(
       {required this.title,
-      required this.alertdialogue,
+      required this.FontSize,
+      this.alertdialogue,
       required this.padding,
+      required this.fontColor,
+      required this.backgroundColor,
       Key? key})
       : super(key: key);
 
@@ -24,21 +30,24 @@ class _RectButtonState extends State<RectButton> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: MyColor.blue,
+        color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(cardBorderRadius),
       ),
       child: new Material(
         child: new InkWell(
           borderRadius: BorderRadius.circular(cardBorderRadius),
           onTap: () {
-            widget.alertdialogue();
+            if (widget.alertdialogue != null) {
+              widget.alertdialogue!();
+            } else {}
             print("tapped");
           },
           child: new Container(
             padding: widget.padding,
             child: Text(
               widget.title,
-              style: Fonts.gRubik(16, MyColor.white, FontWeight.normal),
+              style: Fonts.gRubik(
+                  widget.FontSize, widget.fontColor, FontWeight.w400),
             ),
           ),
         ),

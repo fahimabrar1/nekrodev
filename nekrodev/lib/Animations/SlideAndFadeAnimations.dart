@@ -8,11 +8,15 @@ class SlideAndFade extends StatefulWidget {
   final int second;
   final Curve curve;
   final TransitionType transitionType;
+  final Widget child;
+  final double offsetRange;
 
   SlideAndFade(
-      {required this.second,
+      {required this.child,
+      required this.second,
       required this.curve,
       required this.transitionType,
+      required this.offsetRange,
       Key? key})
       : super(key: key);
 
@@ -35,12 +39,12 @@ class _SlideAndFadeState extends State<SlideAndFade>
 
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
     begin: transitionType == TransitionType.LeftToRight
-        ? Offset(-1, 0.0)
+        ? Offset(-widget.offsetRange, 0.0)
         : transitionType == TransitionType.RightToLeft
-            ? Offset(1, 0)
+            ? Offset(widget.offsetRange, 0)
             : transitionType == TransitionType.TopToBottom
-                ? Offset(0, 1)
-                : Offset(0, -1),
+                ? Offset(0, widget.offsetRange)
+                : Offset(0, -widget.offsetRange),
     end: Offset.zero,
   ).animate(CurvedAnimation(
     parent: _controller,
@@ -61,10 +65,7 @@ class _SlideAndFadeState extends State<SlideAndFade>
         position: _offsetAnimation,
         child: Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text(
-            "NekroDev",
-            style: Fonts.gRubik(24, MyColor.blackFont, FontWeight.bold),
-          ),
+          child: widget.child,
           //child: FlutterLogo(size: 50.0),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nekrodev/Components/MyColors.dart';
 import 'package:nekrodev/Pages/HomePage.dart';
 
 ///
@@ -12,7 +13,10 @@ class HomePageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomePage(),
+      body: Container(
+        color: MyColor.bgBlueish,
+        child: HomePage(),
+      ),
     );
   }
 }

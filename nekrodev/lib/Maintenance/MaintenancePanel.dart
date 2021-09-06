@@ -41,41 +41,7 @@ class _MaintenancePanel_DState extends State<MaintenancePanel_D> {
               width: 800,
               margin: EdgeInsets.only(right: borderMargin),
               //color: Colors.red,
-              child: Stack(
-                children: [
-                  RiveAnimation.asset('maintenance.riv'),
-                  Container(
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(
-                        top: (borderMargin / 2) + 10, right: borderMargin),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text: 'UNDER\n',
-                        style: Fonts.gRubik(
-                            36, MyColor.blackFont, FontWeight.bold),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'CONSTRUCTION',
-                            style: Fonts.gRubik(
-                                24, MyColor.blackFont, FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(
-                        top: borderMargin + 85, right: borderMargin - 15),
-                    child: Text(
-                      "!",
-                      style:
-                          Fonts.gRubik(36, MyColor.blackFont, FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
+              child: RiveAnimation.asset('maintenance.riv'),
             ),
           ),
           Align(
@@ -138,42 +104,7 @@ class _MaintenancePanel_TState extends State<MaintenancePanel_T> {
               width: 600,
               margin: EdgeInsets.only(right: 100),
               //color: Colors.red,
-              child: Stack(
-                children: [
-                  RiveAnimation.asset('maintenance.riv'),
-                  Container(
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(
-                        top: (borderMargin / 2) - 35,
-                        right: borderMargin - 105),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text: 'UNDER\n',
-                        style: Fonts.gRubik(
-                            36, MyColor.blackFont, FontWeight.bold),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'CONSTRUCTION',
-                            style: Fonts.gRubik(
-                                24, MyColor.blackFont, FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(
-                        top: borderMargin - 18, right: borderMargin - 87),
-                    child: Text(
-                      "!",
-                      style:
-                          Fonts.gRubik(36, MyColor.blackFont, FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
+              child: RiveAnimation.asset('maintenance.riv'),
             ),
           ),
           Align(
@@ -235,48 +166,16 @@ class _MaintenancePanel_MState extends State<MaintenancePanel_M> {
               height: 500,
               width: 500,
               //color: Colors.red,
-              child: Stack(
-                children: [
-                  Container(
-                      margin: EdgeInsets.only(top: 100),
-                      child: RiveAnimation.asset('maintenance.riv')),
-                  Container(
-                    alignment: Alignment.center,
-                    margin:
-                        EdgeInsets.only(bottom: (borderMargin / 2), left: 10),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text: 'UNDER\n',
-                        style: Fonts.gRubik(
-                            24, MyColor.blackFont, FontWeight.bold),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'CONSTRUCTION',
-                            style: Fonts.gRubik(
-                                18, MyColor.blackFont, FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(top: 110, left: 135),
-                    child: Text(
-                      "!",
-                      style:
-                          Fonts.gRubik(24, MyColor.blackFont, FontWeight.bold),
-                    ),
-                  ),
-                ],
+              child: Container(
+                margin: EdgeInsets.only(top: 100),
+                child: RiveAnimation.asset('maintenance.riv'),
               ),
             ),
           ),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.only(top: 100),
+              margin: EdgeInsets.only(top: 50),
               child: Text(
                 "SITE IS UNDER\nMAINTENANCE.",
                 style: Fonts.gRubik(36, MyColor.blackFont, FontWeight.bold),

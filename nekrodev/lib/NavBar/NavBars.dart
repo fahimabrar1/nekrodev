@@ -42,26 +42,32 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
 
   @override
   Widget build(BuildContext context) {
+    final NavBarColorPalette navBarColorPalette = new NavBarColorPalette();
     late Responsive navresponsive = new Responsive(
-      mobile: new TabletNavBar(
+      mobile: new MobileNavbar(
+        navBarColorPalette: navBarColorPalette,
         isDropDownNavExpanded: isDropDownNavExpanded,
         setbool: (bool) {
           setDropDownNavBarState(bool);
         },
       ),
       tablet: new TabletNavBar(
+        navBarColorPalette: navBarColorPalette,
         isDropDownNavExpanded: isDropDownNavExpanded,
         setbool: (bool) {
           setDropDownNavBarState(bool);
         },
       ),
-      desktop: DeskTopNavBar(),
+      desktop: DeskTopNavBar(
+        navBarColorPalette: navBarColorPalette,
+      ),
     );
 
     late Responsive navBarDropDown = new Responsive(
       mobile: new DropdowNavbar(
         isDropDownNavExpanded: isDropDownNavExpanded,
         dropdownNavBar: dropdownNavBar,
+        FontSize: 12,
         showtiles: showlist,
         changeTileVisibility: (bool) {
           setState(() {
@@ -73,6 +79,7 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
       tablet: new DropdowNavbar(
         isDropDownNavExpanded: isDropDownNavExpanded,
         dropdownNavBar: dropdownNavBar,
+        FontSize: 14,
         showtiles: showlist,
         changeTileVisibility: (bool) {
           setState(() {
@@ -86,7 +93,10 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
 
     return Center(
       child: Column(
-        children: [navresponsive, navBarDropDown],
+        children: [
+          navresponsive,
+          navBarDropDown,
+        ],
       ),
     );
   }
@@ -107,7 +117,8 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
 ///
 
 class DeskTopNavBar extends StatefulWidget {
-  DeskTopNavBar({Key? key}) : super(key: key);
+  final NavBarColorPalette navBarColorPalette;
+  DeskTopNavBar({required this.navBarColorPalette, Key? key}) : super(key: key);
 
   @override
   _DeskTopNavBarState createState() => _DeskTopNavBarState();
@@ -120,7 +131,7 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
       padding: EdgeInsets.only(left: sideBorderMargin, right: sideBorderMargin),
       width: MediaQuery.of(context).size.width,
       height: 80,
-      decoration: BoxDecoration(color: MyColor.white),
+      decoration: BoxDecoration(color: widget.navBarColorPalette.barColor),
       child: Column(
         children: [
           Expanded(
@@ -131,6 +142,14 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                     //color: Colors.red,
                     alignment: Alignment.centerRight,
                     child: SlideAndFade(
+                      offsetRange: 1,
+                      child: Text(
+                        "NekroDev",
+                        style: Fonts.gRubik(
+                            24,
+                            widget.navBarColorPalette.contactButtonColor,
+                            FontWeight.bold),
+                      ),
                       second: 1,
                       curve: Curves.easeInOut,
                       transitionType: TransitionType.LeftToRight,
@@ -145,9 +164,15 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        NavbarItem(title: "Home"),
-                        NavbarItem(title: "About Us"),
-                        NavbarItem(title: "Contact Us"),
+                        NavbarItem(
+                            title: "Home",
+                            navBarColorPalette: widget.navBarColorPalette),
+                        NavbarItem(
+                            title: "About Us",
+                            navBarColorPalette: widget.navBarColorPalette),
+                        NavbarItem(
+                            title: "Contact Us",
+                            navBarColorPalette: widget.navBarColorPalette),
                       ],
                     ),
                   ),
@@ -157,7 +182,12 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                     //color: Colors.red,
                     alignment: Alignment.centerLeft,
                     child: RectButton(
+                      FontSize: 16,
                       title: "Contact Us",
+                      fontColor:
+                          widget.navBarColorPalette.contactButtonFontColor,
+                      backgroundColor:
+                          widget.navBarColorPalette.contactButtonColor,
                       alertdialogue: _showContactDialogue,
                       padding: EdgeInsets.only(
                         left: 25,
@@ -264,15 +294,17 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
 
 ///
 /// This TabletNavBar Gives A Slide And Fade Animation to Logo/Name and an Expansion Button On Right To Expand and show more Navbar Items.
-/// It is also used for mobile view.
 ///
 
 class TabletNavBar extends StatefulWidget {
   final setBool setbool;
   late bool isDropDownNavExpanded;
-
+  final NavBarColorPalette navBarColorPalette;
   TabletNavBar(
-      {required this.setbool, required this.isDropDownNavExpanded, Key? key})
+      {required this.navBarColorPalette,
+      required this.setbool,
+      required this.isDropDownNavExpanded,
+      Key? key})
       : super(key: key);
 
   @override
@@ -294,6 +326,7 @@ class _TabletNavBarState extends State<TabletNavBar> {
     return Container(
       padding: EdgeInsets.only(left: sideBorderMargin, right: sideBorderMargin),
       width: MediaQuery.of(context).size.width,
+      color: widget.navBarColorPalette.barColor,
       height: 80,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -309,6 +342,14 @@ class _TabletNavBarState extends State<TabletNavBar> {
                       //color: Colors.amber,
                       alignment: Alignment.centerLeft,
                       child: SlideAndFade(
+                        offsetRange: 1,
+                        child: Text(
+                          "NekroDev",
+                          style: Fonts.gRubik(
+                              21,
+                              widget.navBarColorPalette.hoverColor,
+                              FontWeight.bold),
+                        ),
                         second: 1,
                         curve: Curves.easeInOut,
                         transitionType: TransitionType.LeftToRight,
@@ -317,12 +358,14 @@ class _TabletNavBarState extends State<TabletNavBar> {
                   ),
                   Flexible(
                     child: Container(
+                      //color: Colors.amber,
                       alignment: Alignment.centerRight,
                       child: Container(
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          border: Border.all(color: MyColor.blue),
+                          border: Border.all(
+                              color: widget.navBarColorPalette.hoverColor),
                           borderRadius: BorderRadius.circular(cardBorderRadius),
                         ),
                         child: new Material(
@@ -344,7 +387,123 @@ class _TabletNavBarState extends State<TabletNavBar> {
                             },
                             child: Icon(
                               Icons.menu,
-                              color: MyColor.blue,
+                              color: widget.navBarColorPalette.hoverColor,
+                            ),
+                          ),
+                          color: Colors.transparent,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+///
+/// This Mobile Gives A Slide And Fade Animation to Logo/Name and an Expansion Button On Right To Expand and show more Navbar Items.
+///
+
+class MobileNavbar extends StatefulWidget {
+  final setBool setbool;
+  late bool isDropDownNavExpanded;
+  final NavBarColorPalette navBarColorPalette;
+
+  MobileNavbar(
+      {required this.navBarColorPalette,
+      required this.setbool,
+      required this.isDropDownNavExpanded,
+      Key? key})
+      : super(key: key);
+
+  @override
+  _MobileNavbarState createState() => _MobileNavbarState();
+}
+
+class _MobileNavbarState extends State<MobileNavbar> {
+  late bool clicked;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    clicked = widget.isDropDownNavExpanded;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding:
+          EdgeInsets.only(left: mobileBorderMargin, right: mobileBorderMargin),
+      width: MediaQuery.of(context).size.width,
+      height: 80,
+      color: widget.navBarColorPalette.barColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              //color: Colors.amber,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Container(
+                      //color: Colors.amber,
+                      alignment: Alignment.centerLeft,
+                      child: SlideAndFade(
+                        offsetRange: 1,
+                        child: Text(
+                          "NekroDev",
+                          style: Fonts.gRubik(
+                              16,
+                              widget.navBarColorPalette.contactButtonColor,
+                              FontWeight.bold),
+                        ),
+                        second: 1,
+                        curve: Curves.easeInOut,
+                        transitionType: TransitionType.LeftToRight,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color:
+                                  widget.navBarColorPalette.contactButtonColor),
+                          borderRadius: BorderRadius.circular(cardBorderRadius),
+                        ),
+                        child: new Material(
+                          child: new InkWell(
+                            borderRadius:
+                                BorderRadius.circular(cardBorderRadius),
+                            onTap: () {
+                              setState(() {
+                                if (clicked) {
+                                  clicked = false;
+                                  widget.setbool(false);
+                                } else {
+                                  clicked = true;
+
+                                  widget.setbool(true);
+                                }
+                              });
+                              print("tapped");
+                            },
+                            child: Icon(
+                              Icons.menu,
+                              color:
+                                  widget.navBarColorPalette.contactButtonColor,
                             ),
                           ),
                           color: Colors.transparent,
@@ -374,9 +533,11 @@ class DropdowNavbar extends StatefulWidget {
   bool showtiles;
   bool isDropDownNavExpanded;
   setBool changeTileVisibility;
+  double FontSize;
   DropdowNavbar(
       {required this.dropdownNavBar,
       required this.showtiles,
+      required this.FontSize,
       required this.isDropDownNavExpanded,
       required this.changeTileVisibility,
       Key? key})
@@ -420,8 +581,8 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                       child: Center(
                         child: Text(
                           "Home",
-                          style: Fonts.gRubik(
-                              18, MyColor.blackFont, FontWeight.normal),
+                          style: Fonts.gRubik(widget.FontSize,
+                              MyColor.blackFont, FontWeight.normal),
                         ),
                       ),
                     ),
@@ -439,8 +600,8 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                       child: Center(
                         child: Text(
                           "About Us",
-                          style: Fonts.gRubik(
-                              18, MyColor.blackFont, FontWeight.normal),
+                          style: Fonts.gRubik(widget.FontSize,
+                              MyColor.blackFont, FontWeight.normal),
                         ),
                       ),
                     ),
@@ -460,8 +621,8 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                       child: Center(
                         child: Text(
                           "Contact Us",
-                          style: Fonts.gRubik(
-                              18, MyColor.blackFont, FontWeight.normal),
+                          style: Fonts.gRubik(widget.FontSize,
+                              MyColor.blackFont, FontWeight.normal),
                         ),
                       ),
                     ),
@@ -557,4 +718,16 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
       },
     );
   }
+}
+
+///
+/// Used To Change The Color OF NavBar Easily
+///
+
+class NavBarColorPalette {
+  final Color barColor = MyColor.blue;
+  final Color contactButtonColor = MyColor.white;
+  final Color contactButtonFontColor = MyColor.blue;
+  final Color hoverColor = MyColor.white;
+  final Color fontColor = MyColor.blackFont;
 }
