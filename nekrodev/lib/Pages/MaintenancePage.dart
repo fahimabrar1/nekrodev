@@ -24,9 +24,11 @@ class _MaintenancePageState extends State<MaintenancePage> {
   /// MaintenancePanel_T is for Tablet
   /// MaintenancePanel_D is for Desktop
   Responsive maintenanceResponsive = new Responsive(
-      mobile: MaintenancePanel_M(),
-      tablet: MaintenancePanel_T(),
-      desktop: MaintenancePanel_D());
+    mobile: MaintenancePanel_M(),
+    tablet: MaintenancePanel_T(),
+    desktop: MaintenancePanel_D(),
+    laptop: Container(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class _MaintenancePageState extends State<MaintenancePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            NavBarResponsive(),
+            NavBars(),
             maintenanceResponsive,
           ],
         ),

@@ -21,13 +21,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
+      child: Wrap(
         children: [
-          NavBarResponsive(),
-          AdvancedInnovationResponsive(),
-          WhoWeArePanel(),
-          ServicesPanel(),
-          Footer(),
+          Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                NavBars(),
+                AdvancedInnovation(),
+                WhoWeArePanel(),
+                ServicesPanel(),
+                Footer(),
+              ],
+            ),
+          ),
         ],
       ),
     );

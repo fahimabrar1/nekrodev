@@ -5,7 +5,6 @@ import 'package:nekrodev/Components/Buttons/RectButton.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Responsive/Responsive.dart';
 import 'package:rive/rive.dart';
-import 'package:flutter/src/painting/gradient.dart' as gradient;
 import '../EnumHolders.dart';
 import '../MyColors.dart';
 import '../MyGlobalVaraibles.dart';
@@ -19,13 +18,16 @@ import '../MyGlobalVaraibles.dart';
 /// AdvancedInnovationResponsive Responsive Calls All the childs Through Responsive.
 ///
 
-class AdvancedInnovationResponsive extends StatelessWidget {
-  AdvancedInnovationResponsive({Key? key}) : super(key: key);
+class AdvancedInnovation extends StatelessWidget {
+  AdvancedInnovation({Key? key}) : super(key: key);
 
   late Responsive AdvancedResponsive = new Responsive(
       mobile: AdvancedInnovation_Mobile(),
-      tablet: AdvancedInnovation_Mobile(),
-      desktop: AdvancedInnovation_Desktop());
+      tablet: AdvancedInnovation_Tablet(),
+      desktop: AdvancedInnovation_Desktop(),
+      laptop: AdvancedInnovation_Desktop(
+        laptopWidth: laptopContainerWidth,
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,8 @@ class AdvancedInnovationResponsive extends StatelessWidget {
 ///
 
 class AdvancedInnovation_Desktop extends StatefulWidget {
-  const AdvancedInnovation_Desktop({Key? key}) : super(key: key);
+  final double? laptopWidth;
+  AdvancedInnovation_Desktop({this.laptopWidth, Key? key}) : super(key: key);
 
   @override
   _AdvancedInnovation_DesktopState createState() =>
@@ -49,31 +52,21 @@ class _AdvancedInnovation_DesktopState
     extends State<AdvancedInnovation_Desktop> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 650,
-      //color: Colors.amber,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: gradient.LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.center,
-                colors: <Color>[
-                  Colors.black.withOpacity(0.08),
-                  Colors.transparent,
-                ],
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: borderMargin, right: borderMargin),
+    return Flexible(
+      child: Container(
+        //color: Colors.amber,
+
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.only(top: 100, bottom: 100),
+            width: desktopContainerWidth,
             child: Row(
               children: [
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -130,7 +123,7 @@ class _AdvancedInnovation_DesktopState
                           ),
                         ),
                         Container(
-                            margin: EdgeInsets.only(top: 30),
+                            margin: EdgeInsets.only(top: 30, bottom: 30),
                             child: RectButton(
                                 FontSize: 16,
                                 fontColor: MyColor.white,
@@ -143,16 +136,18 @@ class _AdvancedInnovation_DesktopState
                 ),
                 Expanded(
                   child: Container(
+                    width: 400,
+                    height: 400,
                     alignment: Alignment.center,
                     //color: Colors.red,
                     child: RiveAnimation.asset('homepage.riv'),
-                    padding: EdgeInsets.only(top: 50, bottom: 50),
+                    //padding: EdgeInsets.only(top: 50, bottom: 50),
                   ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -173,113 +168,111 @@ class AdvancedInnovation_Tablet extends StatefulWidget {
 class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 650,
-      //color: Colors.amber,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: gradient.LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.center,
-                colors: <Color>[
-                  Colors.black.withOpacity(0.08),
-                  Colors.transparent,
-                ],
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(
-                left: sideBorderMargin, right: sideBorderMargin),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
+    return Flexible(
+      child: Container(
+        //color: Colors.amber,
+        child:
+            //Advanced Content And Rive
+
+            Container(
+          padding: EdgeInsets.only(
+              left: mobileBorderMargin, right: mobileBorderMargin),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: Container(
+                  //color: Colors.amber,
+                  padding: EdgeInsets.only(top: 50),
+
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FittedBox(
+                        child: RichText(
                           text: TextSpan(
-                            text: "/ / ",
-                            style: Fonts.gRubik(
-                                16, MyColor.blue, FontWeight.normal),
                             children: [
+                              TextSpan(
+                                text: "/ / ",
+                                style: Fonts.gRubik(
+                                    16, MyColor.blue, FontWeight.normal),
+                              ),
                               TextSpan(
                                 text: "Best IT Solutions Provider",
                                 style: Fonts.gRubik(
                                     16, MyColor.blackFont, FontWeight.normal),
                               ),
+                              TextSpan(
+                                text: "/ / ",
+                                style: Fonts.gRubik(
+                                    16, MyColor.blue, FontWeight.normal),
+                              ),
                             ],
                           ),
                         ),
-                        FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: SlideAndFade(
-                            second: 1,
-                            offsetRange: 0.2,
-                            curve: Curves.easeInOut,
-                            transitionType: TransitionType.LeftToRight,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Advanced\nInnovative\nIT Solutions",
-                                    style: Fonts.gRubik(
-                                        54, MyColor.blackFont, FontWeight.bold),
-                                  ),
+                      ),
+                      FittedBox(
+                        child: SlideAndFade(
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.LeftToRight,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: "Advanced\nInnovative\nIT Solutions",
+                                  style: Fonts.gRubik(
+                                      54, MyColor.blackFont, FontWeight.bold),
                                 ),
-                                Container(
+                              ),
+                              FittedBox(
+                                child: Container(
                                   margin: EdgeInsets.only(bottom: 12, left: 5),
-                                  height: 12,
-                                  width: 12,
+                                  height: 15,
+                                  width: 15,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: MyColor.blue,
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        RichText(
-                          text: TextSpan(
-                            text:
-                                "We run all kind of IT services that vow success.",
-                            style: Fonts.gRubik(
-                                16, MyColor.blackFont, FontWeight.normal),
-                          ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text:
+                              "We run all kind of IT services that vow success.",
+                          style: Fonts.gRubik(
+                              16, MyColor.blackFont, FontWeight.normal),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 30),
+                      ),
+                      FittedBox(
+                        child: Container(
+                          margin:
+                              EdgeInsets.only(top: 30, right: 100, bottom: 30),
                           child: RectButton(
-                            FontSize: 14,
+                            FontSize: 16,
                             fontColor: MyColor.white,
                             backgroundColor: MyColor.blue,
                             title: "View Demos",
-                            padding: EdgeInsets.all(25),
+                            padding: EdgeInsets.all(30),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    //color: Colors.red,
-                    child: RiveAnimation.asset('homepage.riv'),
-                    padding: EdgeInsets.only(top: 50, bottom: 50),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -300,134 +293,111 @@ class AdvancedInnovation_Mobile extends StatefulWidget {
 class _AdvancedInnovation_MobileState extends State<AdvancedInnovation_Mobile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      //color: Colors.amber,
-      child: Stack(
-        children: [
-          //Light Black Gradent Overlay
+    return Flexible(
+      child: Container(
+        //color: Colors.amber,
 
-          Container(
-            decoration: BoxDecoration(
-              gradient: gradient.LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.center,
-                colors: <Color>[
-                  Colors.black.withOpacity(0.08),
-                  Colors.transparent,
-                ],
-              ),
-            ),
-          ),
+        //Advanced Content And Rive
 
-          //Advanced Content And Rive
+        child: Container(
+          padding: EdgeInsets.only(
+              left: mobileBorderMargin, right: mobileBorderMargin),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: Container(
+                  //color: Colors.amber,
+                  padding: EdgeInsets.only(top: 50),
 
-          Container(
-            padding: EdgeInsets.only(
-                left: mobileBorderMargin, right: mobileBorderMargin),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    //color: Colors.amber,
-                    padding: EdgeInsets.only(top: 50),
-
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FittedBox(
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "/ / ",
-                                  style: Fonts.gRubik(
-                                      16, MyColor.blue, FontWeight.normal),
-                                ),
-                                TextSpan(
-                                  text: "Best IT Solutions Provider",
-                                  style: Fonts.gRubik(
-                                      16, MyColor.blackFont, FontWeight.normal),
-                                ),
-                                TextSpan(
-                                  text: "/ / ",
-                                  style: Fonts.gRubik(
-                                      16, MyColor.blue, FontWeight.normal),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        FittedBox(
-                          child: SlideAndFade(
-                            second: 1,
-                            offsetRange: 0.2,
-                            curve: Curves.easeInOut,
-                            transitionType: TransitionType.LeftToRight,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Advanced\nInnovative\nIT Solutions",
-                                    style: Fonts.gRubik(
-                                        54, MyColor.blackFont, FontWeight.bold),
-                                  ),
-                                ),
-                                FittedBox(
-                                  child: Container(
-                                    margin:
-                                        EdgeInsets.only(bottom: 12, left: 5),
-                                    height: 15,
-                                    width: 15,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.blue,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        RichText(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FittedBox(
+                        child: RichText(
                           text: TextSpan(
-                            text:
-                                "We run all kind of IT services that vow success.",
-                            style: Fonts.gRubik(
-                                16, MyColor.blackFont, FontWeight.normal),
+                            children: [
+                              TextSpan(
+                                text: "/ / ",
+                                style: Fonts.gRubik(
+                                    16, MyColor.blue, FontWeight.normal),
+                              ),
+                              TextSpan(
+                                text: "Best IT Solutions Provider",
+                                style: Fonts.gRubik(
+                                    16, MyColor.blackFont, FontWeight.normal),
+                              ),
+                              TextSpan(
+                                text: "/ / ",
+                                style: Fonts.gRubik(
+                                    16, MyColor.blue, FontWeight.normal),
+                              ),
+                            ],
                           ),
                         ),
-                        FittedBox(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 30, right: 100),
-                            child: RectButton(
-                              FontSize: 16,
-                              fontColor: MyColor.white,
-                              backgroundColor: MyColor.blue,
-                              title: "View Demos",
-                              padding: EdgeInsets.all(30),
-                            ),
+                      ),
+                      FittedBox(
+                        child: SlideAndFade(
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.LeftToRight,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: "Advanced\nInnovative\nIT Solutions",
+                                  style: Fonts.gRubik(
+                                      54, MyColor.blackFont, FontWeight.bold),
+                                ),
+                              ),
+                              FittedBox(
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 12, left: 5),
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: MyColor.blue,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text:
+                              "We run all kind of IT services that vow success.",
+                          style: Fonts.gRubik(
+                              16, MyColor.blackFont, FontWeight.normal),
+                        ),
+                      ),
+                      FittedBox(
+                        child: Container(
+                          margin:
+                              EdgeInsets.only(top: 30, right: 100, bottom: 30),
+                          child: RectButton(
+                            FontSize: 16,
+                            fontColor: MyColor.white,
+                            backgroundColor: MyColor.blue,
+                            title: "View Demos",
+                            padding: EdgeInsets.all(30),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                // Expanded(
-                //   child: Container(
-                //     alignment: Alignment.center,
-                //     //color: Colors.red,
-                //     child: RiveAnimation.asset('homepage.riv'),
-                //     padding: EdgeInsets.only(bottom: 20),
-                //   ),
-                // ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

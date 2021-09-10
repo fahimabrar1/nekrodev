@@ -20,24 +20,35 @@ import '../Components/MyGlobalVaraibles.dart';
 /// NavBar Responsive Calls All the navbarts Through Responsive And It Also Contains Dropdown Section.
 ///
 
-class NavBarResponsive extends StatefulWidget {
-  NavBarResponsive({Key? key}) : super(key: key);
+class NavBars extends StatefulWidget {
+  NavBars({Key? key}) : super(key: key);
 
   @override
-  _NavBarResponsiveState createState() => _NavBarResponsiveState();
+  _NavBarsState createState() => _NavBarsState();
 }
 
-class _NavBarResponsiveState extends State<NavBarResponsive> {
+class _NavBarsState extends State<NavBars> {
   late bool dropdownNavBar = false;
   late bool showlist = false;
   late bool isDropDownNavExpanded = false;
-
+  late final ImageIcon imageIcon;
   @override
   void initState() {
     super.initState();
     dropdownNavBar = false;
     showlist = false;
     isDropDownNavExpanded = false;
+    imageIcon = ImageIcon(
+      AssetImage("/nekrodev_w.png"),
+      color: MyColor.white,
+      size: 200,
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override
@@ -52,14 +63,49 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
         },
       ),
       tablet: new TabletNavBar(
+        logo: imageIcon,
         navBarColorPalette: navBarColorPalette,
         isDropDownNavExpanded: isDropDownNavExpanded,
         setbool: (bool) {
           setDropDownNavBarState(bool);
         },
       ),
-      desktop: DeskTopNavBar(
-        navBarColorPalette: navBarColorPalette,
+      desktop: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 80,
+        decoration: BoxDecoration(color: MyColor.blue, boxShadow: [
+          BoxShadow(
+            offset: Offset.zero,
+            color: Colors.black26,
+            spreadRadius: 5,
+            blurRadius: 50,
+          )
+        ]),
+        child: Center(
+          child: Container(
+            width: (Responsive.isDesktop(context)) ? desktopContainerWidth : 0,
+            child: DeskTopNavBar(
+              logo: imageIcon,
+              navBarColorPalette: navBarColorPalette,
+            ),
+          ),
+        ),
+      ),
+      laptop: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 80,
+        decoration: BoxDecoration(
+          color: MyColor.blue,
+        ),
+        child: Center(
+          child: Container(
+            width: (Responsive.isLaptop(context)) ? laptopContainerWidth : 0,
+            child: DeskTopNavBar(
+              logo: imageIcon,
+              navBarColorPalette: navBarColorPalette,
+            ),
+          ),
+        ),
       ),
     );
 
@@ -89,6 +135,7 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
         },
       ),
       desktop: Container(),
+      laptop: Container(),
     );
 
     return Center(
@@ -118,7 +165,10 @@ class _NavBarResponsiveState extends State<NavBarResponsive> {
 
 class DeskTopNavBar extends StatefulWidget {
   final NavBarColorPalette navBarColorPalette;
-  DeskTopNavBar({required this.navBarColorPalette, Key? key}) : super(key: key);
+  final Widget logo;
+  DeskTopNavBar(
+      {required this.logo, required this.navBarColorPalette, Key? key})
+      : super(key: key);
 
   @override
   _DeskTopNavBarState createState() => _DeskTopNavBarState();
@@ -127,82 +177,77 @@ class DeskTopNavBar extends StatefulWidget {
 class _DeskTopNavBarState extends State<DeskTopNavBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: sideBorderMargin, right: sideBorderMargin),
-      width: MediaQuery.of(context).size.width,
-      height: 80,
-      decoration: BoxDecoration(color: widget.navBarColorPalette.barColor),
-      child: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                Flexible(
-                  child: Container(
-                    //color: Colors.red,
-                    alignment: Alignment.centerRight,
-                    child: SlideAndFade(
-                      offsetRange: 1,
-                      child: Text(
-                        "NekroDev",
-                        style: Fonts.gRubik(
-                            24,
-                            widget.navBarColorPalette.contactButtonColor,
-                            FontWeight.bold),
-                      ),
-                      second: 1,
-                      curve: Curves.easeInOut,
-                      transitionType: TransitionType.LeftToRight,
+    return Column(
+      children: [
+        Expanded(
+          child: Row(
+            children: [
+              Flexible(
+                child: Container(
+                  //color: Colors.red,
+                  alignment: Alignment.centerLeft,
+                  child: SlideAndFade(
+                    offsetRange: 0.1,
+                    // child: Text(
+                    //   "NekroDev",
+                    //   style: Fonts.gRubik(
+                    //       24,
+                    //       widget.navBarColorPalette.contactButtonColor,
+                    //       FontWeight.bold),
+                    // ),
+                    child: widget.logo,
+
+                    second: 1,
+                    curve: Curves.easeInOut,
+                    transitionType: TransitionType.LeftToRight,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  //color: Colors.yellow,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      NavbarItem(
+                          title: "Home",
+                          navBarColorPalette: widget.navBarColorPalette),
+                      NavbarItem(
+                          title: "About Us",
+                          navBarColorPalette: widget.navBarColorPalette),
+                      NavbarItem(
+                          title: "Contact Us",
+                          navBarColorPalette: widget.navBarColorPalette),
+                    ],
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  //color: Colors.red,
+                  alignment: Alignment.centerRight,
+                  child: RectButton(
+                    FontSize: 16,
+                    title: "Contact Us",
+                    fontColor: widget.navBarColorPalette.contactButtonFontColor,
+                    backgroundColor:
+                        widget.navBarColorPalette.contactButtonColor,
+                    alertdialogue: _showContactDialogue,
+                    padding: EdgeInsets.only(
+                      left: 25,
+                      right: 25,
+                      top: 15,
+                      bottom: 15,
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    //color: Colors.yellow,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        NavbarItem(
-                            title: "Home",
-                            navBarColorPalette: widget.navBarColorPalette),
-                        NavbarItem(
-                            title: "About Us",
-                            navBarColorPalette: widget.navBarColorPalette),
-                        NavbarItem(
-                            title: "Contact Us",
-                            navBarColorPalette: widget.navBarColorPalette),
-                      ],
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    //color: Colors.red,
-                    alignment: Alignment.centerLeft,
-                    child: RectButton(
-                      FontSize: 16,
-                      title: "Contact Us",
-                      fontColor:
-                          widget.navBarColorPalette.contactButtonFontColor,
-                      backgroundColor:
-                          widget.navBarColorPalette.contactButtonColor,
-                      alertdialogue: _showContactDialogue,
-                      padding: EdgeInsets.only(
-                        left: 25,
-                        right: 25,
-                        top: 15,
-                        bottom: 15,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -299,9 +344,13 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
 class TabletNavBar extends StatefulWidget {
   final setBool setbool;
   late bool isDropDownNavExpanded;
+
   final NavBarColorPalette navBarColorPalette;
+  final Widget logo;
+
   TabletNavBar(
       {required this.navBarColorPalette,
+      required this.logo,
       required this.setbool,
       required this.isDropDownNavExpanded,
       Key? key})
@@ -324,9 +373,10 @@ class _TabletNavBarState extends State<TabletNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: sideBorderMargin, right: sideBorderMargin),
       width: MediaQuery.of(context).size.width,
       color: widget.navBarColorPalette.barColor,
+      padding:
+          EdgeInsets.only(left: mobileBorderMargin, right: mobileBorderMargin),
       height: 80,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -342,14 +392,16 @@ class _TabletNavBarState extends State<TabletNavBar> {
                       //color: Colors.amber,
                       alignment: Alignment.centerLeft,
                       child: SlideAndFade(
-                        offsetRange: 1,
-                        child: Text(
-                          "NekroDev",
-                          style: Fonts.gRubik(
-                              21,
-                              widget.navBarColorPalette.hoverColor,
-                              FontWeight.bold),
-                        ),
+                        offsetRange: 0.1,
+                        // child: Text(
+                        //   "NekroDev",
+                        //   style: Fonts.gRubik(
+                        //       21,
+                        //       widget.navBarColorPalette.hoverColor,
+                        //       FontWeight.bold),
+                        // ),
+                        child: widget.logo,
+
                         second: 1,
                         curve: Curves.easeInOut,
                         transitionType: TransitionType.LeftToRight,
@@ -457,13 +509,18 @@ class _MobileNavbarState extends State<MobileNavbar> {
                       //color: Colors.amber,
                       alignment: Alignment.centerLeft,
                       child: SlideAndFade(
-                        offsetRange: 1,
-                        child: Text(
-                          "NekroDev",
-                          style: Fonts.gRubik(
-                              16,
-                              widget.navBarColorPalette.contactButtonColor,
-                              FontWeight.bold),
+                        offsetRange: 0.1,
+                        // child: Text(
+                        //   "NekroDev",
+                        //   style: Fonts.gRubik(
+                        //       16,
+                        //       widget.navBarColorPalette.contactButtonColor,
+                        //       FontWeight.bold),
+                        // ),
+                        child: ImageIcon(
+                          AssetImage("/nekrodev_w.png"),
+                          color: MyColor.white,
+                          size: 150,
                         ),
                         second: 1,
                         curve: Curves.easeInOut,
