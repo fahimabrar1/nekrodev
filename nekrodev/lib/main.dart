@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Screens/HomeScreen.dart';
-import 'Screens/MaintenenceScreen.dart';
+import 'package:nekrodev/Screens/TestScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePageScreen(),
+      home: TestScreen(),
     );
   }
 }

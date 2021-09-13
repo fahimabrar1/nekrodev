@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Footer/Footer.dart';
 import 'package:nekrodev/Components/Panels/AdvancedInnovation.dart';
+import 'package:nekrodev/Components/Panels/CantAffordForWebsite.dart';
 import 'package:nekrodev/Components/Panels/ServicesPanel.dart';
 import 'package:nekrodev/Components/Panels/WhoWeArePanel.dart';
 import 'package:nekrodev/NavBar/NavBars.dart';
+import 'package:nekrodev/Pages/Testpage.dart';
 
 /// HomePage is the Landing Page
 /// It is a Single Page
@@ -31,6 +33,8 @@ class _HomePageState extends State<HomePage> {
                 AdvancedInnovation(),
                 WhoWeArePanel(),
                 ServicesPanel(),
+                CantAffordForWebsite(),
+                TestPage(),
                 Footer(),
               ],
             ),

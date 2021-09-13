@@ -23,7 +23,7 @@ class ServicesPanel extends StatelessWidget {
       desktop: ServicesPanel_Desktop(),
       laptop: ServicesPanel_Desktop(
         laptopWidth: laptopContainerWidth,
-      ));
+      ),);
   @override
   Widget build(BuildContext context) {
     return ServicePanelResponsove;
@@ -226,7 +226,163 @@ class ServicesPanel_Tablet extends StatefulWidget {
 class _ServicesPanel_TabletState extends State<ServicesPanel_Tablet> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Flexible(
+      child: Container(
+        //height: 700,
+        //color: Colors.amber[100],
+        width: laptopContainerWidth,
+        child: Row(
+          children: [
+            Expanded(
+                child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 50, bottom: 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: FittedBox(
+                                  child: Container(
+                                    //color: Colors.red,
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        height: 400,
+                                        width: 400,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              cardBorderRadius),
+                                          child: Image(
+                                            fit: BoxFit.fill,
+                                            image: AssetImage(
+                                                "/images/pexels1.jpeg"),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 80, top: 50),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                          child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              RichText(
+                                                text: TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: "// ",
+                                                      style: Fonts.gRubik(
+                                                          18,
+                                                          MyColor.blue,
+                                                          FontWeight.normal),
+                                                    ),
+                                                    TextSpan(
+                                                      text: "Services",
+                                                      style: Fonts.gRubik(
+                                                          18,
+                                                          MyColor.blackFont,
+                                                          FontWeight.normal),
+                                                    ),
+                                                    TextSpan(
+                                                      text: "//",
+                                                      style: Fonts.gRubik(
+                                                          18,
+                                                          MyColor.blue,
+                                                          FontWeight.normal),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Quality Services With",
+                                                style: Fonts.gRubik(
+                                                    42,
+                                                    MyColor.blackFont,
+                                                    FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "Best Prices",
+                                                style: Fonts.gRubik(
+                                                    64,
+                                                    MyColor.blackFont,
+                                                    FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                        ],
+                                      )),
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 50),
+                                          //color: Colors.red,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ))
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -244,7 +400,174 @@ class ServicesPanel_Mobile extends StatefulWidget {
 class _ServicesPanel_MobileState extends State<ServicesPanel_Mobile> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Flexible(
+      child: Container(
+        //height: 700,
+        //color: Colors.amber[100],
+        width: laptopContainerWidth,
+        child: Container(
+          margin: EdgeInsets.only(
+              left: mobileBorderMargin, right: mobileBorderMargin),
+          padding: EdgeInsets.only(top: 25, bottom: 25),
+          child: Row(
+            children: [
+              Expanded(
+                  child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: FittedBox(
+                                  child: Container(
+                                    //color: Colors.red,
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        height: 300,
+                                        width: 300,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              cardBorderRadius),
+                                          child: Image(
+                                            fit: BoxFit.fill,
+                                            image: AssetImage(
+                                                "/images/pexels1.jpeg"),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 50),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Expanded(
+                                          child: Container(
+                                        padding: EdgeInsets.only(right: 20),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Flexible(
+                                                  child: RichText(
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: "// ",
+                                                          style: Fonts.gRubik(
+                                                              14,
+                                                              MyColor.blue,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                        TextSpan(
+                                                          text: "Services",
+                                                          style: Fonts.gRubik(
+                                                              14,
+                                                              MyColor.blackFont,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                        TextSpan(
+                                                          text: "//",
+                                                          style: Fonts.gRubik(
+                                                              14,
+                                                              MyColor.blue,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Quality Services With",
+                                                  style: Fonts.gRubik(
+                                                      24,
+                                                      MyColor.blackFont,
+                                                      FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  "Best Prices",
+                                                  style: Fonts.gRubik(
+                                                      32,
+                                                      MyColor.blackFont,
+                                                      FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 20),
+                                          //color: Colors.red,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                              ProvidedService(title: "Service"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -259,43 +582,45 @@ class ProvidedService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Container(
-        padding: EdgeInsets.only(
-          top: 20,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipOval(
-              child: Container(
-                height: 30,
-                width: 30,
-                color: MyColor.blue,
-                alignment: Alignment.center,
-                child: Wrap(
-                  children: [
-                    Icon(
-                      Icons.approval,
-                      size: 14,
-                      color: MyColor.white,
-                    ),
-                  ],
+      child: FittedBox(
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 20,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipOval(
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  color: MyColor.blue,
+                  alignment: Alignment.center,
+                  child: Wrap(
+                    children: [
+                      Icon(
+                        Icons.approval,
+                        size: 14,
+                        color: MyColor.white,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 50,
-            ),
-            Text(
-              title,
-              style: Fonts.gRubik(
-                24,
-                MyColor.blackFont,
-                FontWeight.w500,
+              SizedBox(
+                width: 30,
               ),
-            ),
-          ],
+              Text(
+                title,
+                style: Fonts.gRubik(
+                  24,
+                  MyColor.blackFont,
+                  FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

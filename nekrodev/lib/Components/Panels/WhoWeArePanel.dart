@@ -108,6 +108,7 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 50, bottom: 50),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: Column(
@@ -195,7 +196,7 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
-        color: Colors.amber[100],
+        //color: Colors.amber[100],
         width: laptopContainerWidth,
         padding: EdgeInsets.only(
           top: 100,
@@ -342,13 +343,13 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
-        color: Colors.amber[100],
+        //color: Colors.amber[100],
         width: 960,
         padding: EdgeInsets.only(
-          top: 100,
+          top: 25,
           left: mobileBorderMargin,
           right: mobileBorderMargin,
-          bottom: 100,
+          bottom: 25,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -397,12 +398,12 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                       children: [
                         Flexible(
                           child: Container(
-                            padding: EdgeInsets.only(right: 40),
+                            padding: EdgeInsets.only(right: 20),
                             // color: Colors.red,
                             child: Text(
                               "It provides solutions that manage the entireIT service delivery process.",
                               style: Fonts.gRubik(
-                                18,
+                                12,
                                 MyColor.blackFont,
                                 FontWeight.normal,
                               ),
@@ -414,7 +415,7 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(left: 40),
+                      padding: EdgeInsets.only(left: 20),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -428,19 +429,19 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                                     children: [
                                       TextSpan(
                                         text: "// ",
-                                        style: Fonts.gRubik(18, MyColor.blue,
+                                        style: Fonts.gRubik(14, MyColor.blue,
                                             FontWeight.normal),
                                       ),
                                       TextSpan(
                                         text: "WHO WE ARE ",
                                         style: Fonts.gRubik(
-                                            18,
+                                            14,
                                             MyColor.blackFont,
                                             FontWeight.normal),
                                       ),
                                       TextSpan(
                                         text: "//",
-                                        style: Fonts.gRubik(18, MyColor.blue,
+                                        style: Fonts.gRubik(14, MyColor.blue,
                                             FontWeight.normal),
                                       ),
                                     ],
@@ -457,7 +458,7 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                                   text: TextSpan(
                                     text: "IT Solutions For Your Business",
                                     style: Fonts.gRubik(
-                                        42, MyColor.blackFont, FontWeight.bold),
+                                        24, MyColor.blackFont, FontWeight.bold),
                                   ),
                                 ),
                               ),

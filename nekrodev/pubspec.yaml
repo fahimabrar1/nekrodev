@@ -30,7 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   rive: ^0.7.28
-
+  shape_of_view_null_safe: ^2.0.0
+  vector_math: any
+  auto_animated: ^3.0.0
 
   
 dev_dependencies:
@@ -58,6 +60,7 @@ flutter:
     - assets/images/pexels3.jpeg
     - assets/images/pexels4.jpeg
     - assets/maintenance.riv
+    - assets/homepage.riv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
