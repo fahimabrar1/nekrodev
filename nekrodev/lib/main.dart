@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nekrodev/Components/Grid/GridPanel.dart';
+import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
+import 'package:nekrodev/Pages/HomePage.dart';
 import 'package:nekrodev/Screens/HomeScreen.dart';
 import 'package:nekrodev/Screens/TestScreen.dart';
 
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: TestScreen(),
+      home: HomePageScreen(),
     );
   }
 }

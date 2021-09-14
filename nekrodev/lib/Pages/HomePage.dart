@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Footer/Footer.dart';
+import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
 import 'package:nekrodev/Components/Panels/AdvancedInnovation.dart';
 import 'package:nekrodev/Components/Panels/CantAffordForWebsite.dart';
 import 'package:nekrodev/Components/Panels/ServicesPanel.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 WhoWeArePanel(),
                 ServicesPanel(),
                 CantAffordForWebsite(),
-                TestPage(),
+                TemplateGrid(),
                 Footer(),
               ],
             ),

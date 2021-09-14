@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
 import 'package:nekrodev/Pages/Testpage.dart';
 
 class TestScreen extends StatelessWidget {
@@ -6,6 +8,6 @@ class TestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TestPage();
+    return Scaffold(body: TemplateGrid());
   }
 }

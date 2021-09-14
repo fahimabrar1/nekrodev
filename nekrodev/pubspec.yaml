@@ -59,6 +59,12 @@ flutter:
     - assets/images/pexels2.jpeg
     - assets/images/pexels3.jpeg
     - assets/images/pexels4.jpeg
+    - assets/images/image2.png
+    - assets/images/image3.png
+    - assets/images/image4.png
+    - assets/images/image5.png
+    - assets/images/image6.png
+    - assets/images/image7.png
     - assets/maintenance.riv
     - assets/homepage.riv
   #   - images/a_dot_ham.jpeg
