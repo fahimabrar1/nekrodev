@@ -14,7 +14,7 @@ class MaintenenceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: MyColor.bgBlueish,
+        color: MyColor.whiteBg,
         child: MaintenancePage(),
       ),
     );

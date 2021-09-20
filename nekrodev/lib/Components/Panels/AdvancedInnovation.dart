@@ -19,13 +19,17 @@ import '../MyGlobalVaraibles.dart';
 ///
 
 class AdvancedInnovation extends StatelessWidget {
-  AdvancedInnovation({Key? key}) : super(key: key);
+  final Function setController;
+  AdvancedInnovation({required this.setController, Key? key}) : super(key: key);
 
   late Responsive AdvancedResponsive = new Responsive(
-      mobile: AdvancedInnovation_Mobile(),
-      tablet: AdvancedInnovation_Tablet(),
-      desktop: AdvancedInnovation_Desktop(),
+      mobile: AdvancedInnovation_Mobile(setController: setController),
+      tablet: AdvancedInnovation_Tablet(setController: setController),
+      desktop: AdvancedInnovation_Desktop(
+        setController: setController,
+      ),
       laptop: AdvancedInnovation_Desktop(
+        setController: setController,
         laptopWidth: laptopContainerWidth,
       ));
 
@@ -40,8 +44,12 @@ class AdvancedInnovation extends StatelessWidget {
 ///
 
 class AdvancedInnovation_Desktop extends StatefulWidget {
+  final Function setController;
+
   final double? laptopWidth;
-  AdvancedInnovation_Desktop({this.laptopWidth, Key? key}) : super(key: key);
+  AdvancedInnovation_Desktop(
+      {required this.setController, this.laptopWidth, Key? key})
+      : super(key: key);
 
   @override
   _AdvancedInnovation_DesktopState createState() =>
@@ -52,6 +60,9 @@ class _AdvancedInnovation_DesktopState
     extends State<AdvancedInnovation_Desktop> {
   @override
   Widget build(BuildContext context) {
+    final titleKey = GlobalKey();
+    final subTitleKey = GlobalKey();
+    final buttonKey = GlobalKey();
     return Flexible(
       child: Container(
         //color: Colors.amber,
@@ -87,6 +98,10 @@ class _AdvancedInnovation_DesktopState
                         FittedBox(
                           fit: BoxFit.fitWidth,
                           child: SlideAndFade(
+                            playNow: true,
+                            animatedBoxKey: titleKey,
+                            IntervalStart: 0,
+                            IntervalEnd: 0.5,
                             second: 1,
                             offsetRange: 0.2,
                             curve: Curves.easeInOut,
@@ -95,6 +110,7 @@ class _AdvancedInnovation_DesktopState
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 RichText(
+                                  key: titleKey,
                                   text: TextSpan(
                                     text: "Advanced\nInnovative\nIT Solutions",
                                     style: Fonts.gRubik(
@@ -122,14 +138,28 @@ class _AdvancedInnovation_DesktopState
                                 16, MyColor.blackFont, FontWeight.normal),
                           ),
                         ),
-                        Container(
+                        SlideAndFade(
+                          playNow: true,
+                          animatedBoxKey: buttonKey,
+                          IntervalStart: 0.5,
+                          IntervalEnd: 1,
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.BottomToTop,
+                          child: Container(
+                            key: buttonKey,
                             margin: EdgeInsets.only(top: 30, bottom: 30),
                             child: RectButton(
-                                FontSize: 16,
-                                fontColor: MyColor.white,
-                                backgroundColor: MyColor.blue,
-                                title: "View Demos",
-                                padding: EdgeInsets.all(30)))
+                              setController: widget.setController,
+                              FontSize: 16,
+                              fontColor: MyColor.white,
+                              backgroundColor: MyColor.blue,
+                              title: "View Demos",
+                              padding: EdgeInsets.all(30),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -158,7 +188,9 @@ class _AdvancedInnovation_DesktopState
 ///
 
 class AdvancedInnovation_Tablet extends StatefulWidget {
-  const AdvancedInnovation_Tablet({Key? key}) : super(key: key);
+  final Function setController;
+  AdvancedInnovation_Tablet({required this.setController, Key? key})
+      : super(key: key);
 
   @override
   _AdvancedInnovation_TabletState createState() =>
@@ -168,6 +200,9 @@ class AdvancedInnovation_Tablet extends StatefulWidget {
 class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
   @override
   Widget build(BuildContext context) {
+    final titleKey = GlobalKey();
+    final subTitleKey = GlobalKey();
+    final buttonKey = GlobalKey();
     return Flexible(
       child: Container(
         //color: Colors.amber,
@@ -185,10 +220,10 @@ class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
                   //color: Colors.amber,
                   padding: EdgeInsets.only(top: 50),
 
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FittedBox(
@@ -216,6 +251,10 @@ class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
                       ),
                       FittedBox(
                         child: SlideAndFade(
+                          playNow: true,
+                          animatedBoxKey: titleKey,
+                          IntervalStart: 0.25,
+                          IntervalEnd: 0.75,
                           second: 1,
                           offsetRange: 0.2,
                           curve: Curves.easeInOut,
@@ -224,6 +263,7 @@ class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               RichText(
+                                key: titleKey,
                                 text: TextSpan(
                                   text: "Advanced\nInnovative\nIT Solutions",
                                   style: Fonts.gRubik(
@@ -245,24 +285,47 @@ class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
                           ),
                         ),
                       ),
-                      RichText(
-                        text: TextSpan(
-                          text:
-                              "We run all kind of IT services that vow success.",
-                          style: Fonts.gRubik(
-                              16, MyColor.blackFont, FontWeight.normal),
+                      SlideAndFade(
+                        playNow: true,
+                        animatedBoxKey: subTitleKey,
+                        IntervalStart: 0.25,
+                        IntervalEnd: 0.75,
+                        second: 1,
+                        offsetRange: 0.2,
+                        curve: Curves.easeInOut,
+                        transitionType: TransitionType.LeftToRight,
+                        child: RichText(
+                          key: subTitleKey,
+                          text: TextSpan(
+                            text:
+                                "We run all kind of IT services that vow success.",
+                            style: Fonts.gRubik(
+                                16, MyColor.blackFont, FontWeight.normal),
+                          ),
                         ),
                       ),
                       FittedBox(
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(top: 30, right: 100, bottom: 30),
-                          child: RectButton(
-                            FontSize: 16,
-                            fontColor: MyColor.white,
-                            backgroundColor: MyColor.blue,
-                            title: "View Demos",
-                            padding: EdgeInsets.all(30),
+                        child: SlideAndFade(
+                          playNow: true,
+                          animatedBoxKey: buttonKey,
+                          IntervalStart: 0.5,
+                          IntervalEnd: 1,
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.BottomToTop,
+                          child: Container(
+                            key: buttonKey,
+                            margin: EdgeInsets.only(
+                                top: 30, right: 100, bottom: 30),
+                            child: RectButton(
+                              setController: widget.setController,
+                              FontSize: 16,
+                              fontColor: MyColor.white,
+                              backgroundColor: MyColor.blue,
+                              title: "View Demos",
+                              padding: EdgeInsets.all(30),
+                            ),
                           ),
                         ),
                       ),
@@ -283,7 +346,9 @@ class _AdvancedInnovation_TabletState extends State<AdvancedInnovation_Tablet> {
 ///
 
 class AdvancedInnovation_Mobile extends StatefulWidget {
-  const AdvancedInnovation_Mobile({Key? key}) : super(key: key);
+  final Function setController;
+  AdvancedInnovation_Mobile({required this.setController, Key? key})
+      : super(key: key);
 
   @override
   _AdvancedInnovation_MobileState createState() =>
@@ -293,6 +358,9 @@ class AdvancedInnovation_Mobile extends StatefulWidget {
 class _AdvancedInnovation_MobileState extends State<AdvancedInnovation_Mobile> {
   @override
   Widget build(BuildContext context) {
+    final titleKey = GlobalKey();
+    final subTitleKey = GlobalKey();
+    final buttonKey = GlobalKey();
     return Flexible(
       child: Container(
         //color: Colors.amber,
@@ -341,6 +409,10 @@ class _AdvancedInnovation_MobileState extends State<AdvancedInnovation_Mobile> {
                       ),
                       FittedBox(
                         child: SlideAndFade(
+                          playNow: true,
+                          animatedBoxKey: titleKey,
+                          IntervalStart: 0.25,
+                          IntervalEnd: 0.75,
                           second: 1,
                           offsetRange: 0.2,
                           curve: Curves.easeInOut,
@@ -370,24 +442,47 @@ class _AdvancedInnovation_MobileState extends State<AdvancedInnovation_Mobile> {
                           ),
                         ),
                       ),
-                      RichText(
-                        text: TextSpan(
-                          text:
-                              "We run all kind of IT services that vow success.",
-                          style: Fonts.gRubik(
-                              16, MyColor.blackFont, FontWeight.normal),
+                      SlideAndFade(
+                        playNow: true,
+                        animatedBoxKey: subTitleKey,
+                        IntervalStart: 0.5,
+                        IntervalEnd: 1,
+                        second: 1,
+                        offsetRange: 0.2,
+                        curve: Curves.easeInOut,
+                        transitionType: TransitionType.LeftToRight,
+                        child: RichText(
+                          key: subTitleKey,
+                          text: TextSpan(
+                            text:
+                                "We run all kind of IT services that vow success.",
+                            style: Fonts.gRubik(
+                                16, MyColor.blackFont, FontWeight.normal),
+                          ),
                         ),
                       ),
                       FittedBox(
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(top: 30, right: 100, bottom: 30),
-                          child: RectButton(
-                            FontSize: 16,
-                            fontColor: MyColor.white,
-                            backgroundColor: MyColor.blue,
-                            title: "View Demos",
-                            padding: EdgeInsets.all(30),
+                        child: SlideAndFade(
+                          playNow: true,
+                          animatedBoxKey: buttonKey,
+                          IntervalStart: 0.5,
+                          IntervalEnd: 1,
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.BottomToTop,
+                          child: Container(
+                            key: buttonKey,
+                            margin: EdgeInsets.only(
+                                top: 30, right: 100, bottom: 30),
+                            child: RectButton(
+                              setController: widget.setController,
+                              FontSize: 16,
+                              fontColor: MyColor.white,
+                              backgroundColor: MyColor.blue,
+                              title: "View Demos",
+                              padding: EdgeInsets.all(30),
+                            ),
                           ),
                         ),
                       ),

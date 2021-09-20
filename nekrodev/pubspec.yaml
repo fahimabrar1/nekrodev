@@ -33,6 +33,7 @@ dependencies:
   shape_of_view_null_safe: ^2.0.0
   vector_math: any
   auto_animated: ^3.0.0
+  scroll_to_index: any
 
   
 dev_dependencies:

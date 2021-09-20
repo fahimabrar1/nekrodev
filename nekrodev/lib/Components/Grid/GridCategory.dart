@@ -3,6 +3,10 @@ import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 
 import 'RadioButton.dart';
 
+///
+/// GridCategory Responsive Holds All the Categoriy List for the TemplateGrid.
+///
+
 class GridCategory extends StatefulWidget {
   List<RadioModel> sampleData;
   final setString callBack;
@@ -22,6 +26,7 @@ class _GridCategoryState extends State<GridCategory> {
         spacing: 4,
         direction: Axis.horizontal,
         alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: List.generate(
           widget.sampleData.length,
           (index) => RadioItem(

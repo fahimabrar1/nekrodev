@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nekrodev/Animations/SlideAndFadeAnimations.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Responsive/Responsive.dart';
+import '../EnumHolders.dart';
 import '../MyColors.dart';
 import '../MyGlobalVaraibles.dart';
 
@@ -18,12 +20,13 @@ class ServicesPanel extends StatelessWidget {
   ServicesPanel({Key? key}) : super(key: key);
 
   late Responsive ServicePanelResponsove = new Responsive(
-      mobile: ServicesPanel_Mobile(),
-      tablet: ServicesPanel_Tablet(),
-      desktop: ServicesPanel_Desktop(),
-      laptop: ServicesPanel_Desktop(
-        laptopWidth: laptopContainerWidth,
-      ),);
+    mobile: ServicesPanel_Mobile(),
+    tablet: ServicesPanel_Tablet(),
+    desktop: ServicesPanel_Desktop(),
+    laptop: ServicesPanel_Desktop(
+      laptopWidth: laptopContainerWidth,
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return ServicePanelResponsove;
@@ -45,6 +48,10 @@ class ServicesPanel_Desktop extends StatefulWidget {
 class _ServicesPanel_DesktopState extends State<ServicesPanel_Desktop> {
   @override
   Widget build(BuildContext context) {
+    final ServiceTextKey = GlobalKey();
+    final ServiceTitleKey = GlobalKey();
+    final ServiceImageKey = GlobalKey();
+    final ServiceConentKey = GlobalKey();
     return Flexible(
       child: Container(
         //height: 700,
@@ -76,20 +83,31 @@ class _ServicesPanel_DesktopState extends State<ServicesPanel_Desktop> {
                                     //color: Colors.red,
                                     child: Align(
                                       alignment: Alignment.center,
-                                      child: Container(
-                                        height: (widget.laptopWidth != null)
-                                            ? 300
-                                            : 400,
-                                        width: (widget.laptopWidth != null)
-                                            ? 300
-                                            : 400,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                              cardBorderRadius),
-                                          child: Image(
-                                            fit: BoxFit.fill,
-                                            image: AssetImage(
-                                                "/images/pexels1.jpeg"),
+                                      child: SlideAndFade(
+                                        animatedBoxKey: ServiceImageKey,
+                                        transitionType:
+                                            TransitionType.LeftToRight,
+                                        curve: Curves.ease,
+                                        offsetRange: 0.1,
+                                        IntervalStart: 0.25,
+                                        IntervalEnd: 1,
+                                        second: 1,
+                                        child: Container(
+                                          key: ServiceImageKey,
+                                          height: (widget.laptopWidth != null)
+                                              ? 300
+                                              : 400,
+                                          width: (widget.laptopWidth != null)
+                                              ? 300
+                                              : 400,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                                cardBorderRadius),
+                                            child: Image(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  "/images/pexels1.jpeg"),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -115,83 +133,112 @@ class _ServicesPanel_DesktopState extends State<ServicesPanel_Desktop> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      RichText(
-                                        text: TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: "// ",
-                                              style: Fonts.gRubik(
-                                                  18,
-                                                  MyColor.blue,
-                                                  FontWeight.normal),
-                                            ),
-                                            TextSpan(
-                                              text: "Services",
-                                              style: Fonts.gRubik(
-                                                  18,
-                                                  MyColor.blackFont,
-                                                  FontWeight.normal),
-                                            ),
-                                            TextSpan(
-                                              text: "//",
-                                              style: Fonts.gRubik(
-                                                  18,
-                                                  MyColor.blue,
-                                                  FontWeight.normal),
-                                            ),
-                                          ],
+                                      SlideAndFade(
+                                        animatedBoxKey: ServiceTextKey,
+                                        transitionType:
+                                            TransitionType.BottomToTop,
+                                        curve: Curves.ease,
+                                        offsetRange: 0.5,
+                                        IntervalStart: 0,
+                                        IntervalEnd: 1,
+                                        second: 1,
+                                        child: RichText(
+                                          key: ServiceTextKey,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: "// ",
+                                                style: Fonts.gRubik(
+                                                    18,
+                                                    MyColor.blue,
+                                                    FontWeight.normal),
+                                              ),
+                                              TextSpan(
+                                                text: "Services",
+                                                style: Fonts.gRubik(
+                                                    18,
+                                                    MyColor.blackFont,
+                                                    FontWeight.normal),
+                                              ),
+                                              TextSpan(
+                                                text: "//",
+                                                style: Fonts.gRubik(
+                                                    18,
+                                                    MyColor.blue,
+                                                    FontWeight.normal),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                FittedBox(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "IT Solutions",
+                                Padding(
+                                  padding: EdgeInsets.only(top: 20),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SlideAndFade(
+                                        animatedBoxKey: ServiceTitleKey,
+                                        transitionType:
+                                            TransitionType.BottomToTop,
+                                        curve: Curves.ease,
+                                        offsetRange: 0.1,
+                                        IntervalStart: 0.25,
+                                        IntervalEnd: 1,
+                                        second: 1,
+                                        child: Text(
+                                          "Quality Services With Best Prices",
+                                          key: ServiceTitleKey,
                                           style: Fonts.gRubik(
-                                              72,
+                                              54,
                                               MyColor.blackFont,
                                               FontWeight.bold),
                                         ),
-                                        Text(
-                                          "For Your Business",
-                                          style: Fonts.gRubik(
-                                              42,
-                                              MyColor.blackFont,
-                                              FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      // Text(
+                                      //   "For Your Business",
+                                      //   style: Fonts.gRubik(
+                                      //       42,
+                                      //       MyColor.blackFont,
+                                      //       FontWeight.bold),
+                                      // ),
+                                    ],
                                   ),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
                                 Flexible(
-                                  child: Container(
-                                    //color: Colors.red,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ProvidedService(title: "Service"),
-                                        ProvidedService(title: "Service"),
-                                        ProvidedService(title: "Service"),
-                                        ProvidedService(title: "Service"),
-                                        ProvidedService(title: "Service"),
-                                      ],
+                                  child: SlideAndFade(
+                                    animatedBoxKey: ServiceConentKey,
+                                    transitionType: TransitionType.BottomToTop,
+                                    curve: Curves.ease,
+                                    offsetRange: 0.1,
+                                    IntervalStart: 0.25,
+                                    IntervalEnd: 1,
+                                    second: 1,
+                                    child: Container(
+                                      key: ServiceConentKey,
+                                      //color: Colors.red,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          ProvidedService(title: "Service"),
+                                          ProvidedService(title: "Service"),
+                                          ProvidedService(title: "Service"),
+                                          ProvidedService(title: "Service"),
+                                          ProvidedService(title: "Service"),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -273,7 +320,8 @@ class _ServicesPanel_TabletState extends State<ServicesPanel_Tablet> {
                               ),
                               Flexible(
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 80, top: 50),
+                                  padding: EdgeInsets.only(
+                                      left: 40, top: 50, right: 40),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -281,74 +329,85 @@ class _ServicesPanel_TabletState extends State<ServicesPanel_Tablet> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.only(right: 20),
                                           child: Column(
-                                        children: [
-                                          Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              RichText(
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: "// ",
-                                                      style: Fonts.gRubik(
-                                                          18,
-                                                          MyColor.blue,
-                                                          FontWeight.normal),
-                                                    ),
-                                                    TextSpan(
-                                                      text: "Services",
-                                                      style: Fonts.gRubik(
-                                                          18,
-                                                          MyColor.blackFont,
-                                                          FontWeight.normal),
-                                                    ),
-                                                    TextSpan(
-                                                      text: "//",
-                                                      style: Fonts.gRubik(
-                                                          18,
-                                                          MyColor.blue,
-                                                          FontWeight.normal),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            mainAxisSize: MainAxisSize.min,
+                                                MainAxisAlignment.end,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                "Quality Services With",
-                                                style: Fonts.gRubik(
-                                                    42,
-                                                    MyColor.blackFont,
-                                                    FontWeight.bold),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  RichText(
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: "// ",
+                                                          style: Fonts.gRubik(
+                                                              18,
+                                                              MyColor.blue,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                        TextSpan(
+                                                          text: "Services",
+                                                          style: Fonts.gRubik(
+                                                              18,
+                                                              MyColor.blackFont,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                        TextSpan(
+                                                          text: "//",
+                                                          style: Fonts.gRubik(
+                                                              18,
+                                                              MyColor.blue,
+                                                              FontWeight
+                                                                  .normal),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              Text(
-                                                "Best Prices",
-                                                style: Fonts.gRubik(
-                                                    64,
-                                                    MyColor.blackFont,
-                                                    FontWeight.bold),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Quality Services With Best Prices",
+                                                    style: Fonts.gRubik(
+                                                        36,
+                                                        MyColor.blackFont,
+                                                        FontWeight.bold),
+                                                  ),
+                                                  // Text(
+                                                  //   "",
+                                                  //   style: Fonts.gRubik(
+                                                  //       42,
+                                                  //       MyColor.blackFont,
+                                                  //       FontWeight.bold),
+                                                  // ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 20,
                                               ),
                                             ],
                                           ),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                        ],
-                                      )),
+                                        ),
+                                      ),
                                       Expanded(
                                         child: Container(
-                                          padding: EdgeInsets.only(left: 50),
+                                          padding: EdgeInsets.only(left: 20),
                                           //color: Colors.red,
                                           child: Column(
                                             mainAxisAlignment:

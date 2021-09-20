@@ -11,8 +11,11 @@ class RectButton extends StatefulWidget {
   final voidMethod? alertdialogue;
   final Color fontColor;
   final Color backgroundColor;
-  const RectButton(
-      {required this.title,
+  Function? setController;
+
+  RectButton(
+      {this.setController,
+      required this.title,
       required this.FontSize,
       this.alertdialogue,
       required this.padding,
@@ -39,7 +42,9 @@ class _RectButtonState extends State<RectButton> {
           onTap: () {
             if (widget.alertdialogue != null) {
               widget.alertdialogue!();
-            } else {}
+            } else {
+              widget.setController!();
+            }
             print("tapped");
           },
           child: new Container(

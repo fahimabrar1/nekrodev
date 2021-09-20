@@ -38,6 +38,7 @@ class _NavBarsState extends State<NavBars> {
     dropdownNavBar = false;
     showlist = false;
     isDropDownNavExpanded = false;
+
     imageIcon = ImageIcon(
       AssetImage("/nekrodev_w.png"),
       color: MyColor.white,
@@ -175,6 +176,7 @@ class DeskTopNavBar extends StatefulWidget {
 }
 
 class _DeskTopNavBarState extends State<DeskTopNavBar> {
+  final logoKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -187,7 +189,12 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                   //color: Colors.red,
                   alignment: Alignment.centerLeft,
                   child: SlideAndFade(
+                    playNow: true,
+                    animatedBoxKey: logoKey,
                     offsetRange: 0.1,
+                    second: 1,
+                    curve: Curves.easeInOut,
+                    transitionType: TransitionType.LeftToRight,
                     // child: Text(
                     //   "NekroDev",
                     //   style: Fonts.gRubik(
@@ -195,11 +202,7 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                     //       widget.navBarColorPalette.contactButtonColor,
                     //       FontWeight.bold),
                     // ),
-                    child: widget.logo,
-
-                    second: 1,
-                    curve: Curves.easeInOut,
-                    transitionType: TransitionType.LeftToRight,
+                    child: Container(key: logoKey, child: widget.logo),
                   ),
                 ),
               ),
@@ -372,6 +375,7 @@ class _TabletNavBarState extends State<TabletNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final logoKey = GlobalKey();
     return Container(
       width: MediaQuery.of(context).size.width,
       color: widget.navBarColorPalette.barColor,
@@ -392,7 +396,15 @@ class _TabletNavBarState extends State<TabletNavBar> {
                       //color: Colors.amber,
                       alignment: Alignment.centerLeft,
                       child: SlideAndFade(
+                        playNow: true,
+                        animatedBoxKey: logoKey,
+
+                        second: 1,
+                        curve: Curves.easeInOut,
+                        transitionType: TransitionType.LeftToRight,
                         offsetRange: 0.1,
+                        child: Container(key: logoKey, child: widget.logo),
+
                         // child: Text(
                         //   "NekroDev",
                         //   style: Fonts.gRubik(
@@ -400,11 +412,6 @@ class _TabletNavBarState extends State<TabletNavBar> {
                         //       widget.navBarColorPalette.hoverColor,
                         //       FontWeight.bold),
                         // ),
-                        child: widget.logo,
-
-                        second: 1,
-                        curve: Curves.easeInOut,
-                        transitionType: TransitionType.LeftToRight,
                       ),
                     ),
                   ),
@@ -489,6 +496,8 @@ class _MobileNavbarState extends State<MobileNavbar> {
 
   @override
   Widget build(BuildContext context) {
+    final logoKey = GlobalKey();
+
     return Container(
       padding:
           EdgeInsets.only(left: mobileBorderMargin, right: mobileBorderMargin),
@@ -509,6 +518,10 @@ class _MobileNavbarState extends State<MobileNavbar> {
                       //color: Colors.amber,
                       alignment: Alignment.centerLeft,
                       child: SlideAndFade(
+                        playNow: true,
+                        animatedBoxKey: logoKey, second: 1,
+                        curve: Curves.easeInOut,
+                        transitionType: TransitionType.LeftToRight,
                         offsetRange: 0.1,
                         // child: Text(
                         //   "NekroDev",
@@ -519,12 +532,10 @@ class _MobileNavbarState extends State<MobileNavbar> {
                         // ),
                         child: ImageIcon(
                           AssetImage("/nekrodev_w.png"),
+                          key: logoKey,
                           color: MyColor.white,
                           size: 150,
                         ),
-                        second: 1,
-                        curve: Curves.easeInOut,
-                        transitionType: TransitionType.LeftToRight,
                       ),
                     ),
                   ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nekrodev/Animations/SlideAndFadeAnimations.dart';
+import 'package:nekrodev/Components/EnumHolders.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Responsive/Responsive.dart';
 import '../MyColors.dart';
@@ -44,6 +46,10 @@ class WhoWeAre_Desktop extends StatefulWidget {
 }
 
 class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
+  final headerKey = GlobalKey();
+  final titleKey = GlobalKey();
+  final imageKey = GlobalKey();
+  final contentKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -64,44 +70,65 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "// ",
-                                style: Fonts.gRubik(
-                                    18, MyColor.blue, FontWeight.normal),
-                              ),
-                              TextSpan(
-                                text: "WHO WE ARE ",
-                                style: Fonts.gRubik(
-                                    18, MyColor.blackFont, FontWeight.normal),
-                              ),
-                              TextSpan(
-                                text: "//",
-                                style: Fonts.gRubik(
-                                    18, MyColor.blue, FontWeight.normal),
-                              ),
-                            ],
+                        SlideAndFade(
+                          playNow: false,
+                          animatedBoxKey: headerKey,
+                          IntervalStart: 0.0,
+                          IntervalEnd: 1,
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.BottomToTop,
+                          child: RichText(
+                            key: headerKey,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "// ",
+                                  style: Fonts.gRubik(
+                                      18, MyColor.blue, FontWeight.normal),
+                                ),
+                                TextSpan(
+                                  text: "WHO WE ARE ",
+                                  style: Fonts.gRubik(
+                                      18, MyColor.blackFont, FontWeight.normal),
+                                ),
+                                TextSpan(
+                                  text: "//",
+                                  style: Fonts.gRubik(
+                                      18, MyColor.blue, FontWeight.normal),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        //),
                       ],
                     ),
                   ),
-                  FittedBox(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
+                  Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SlideAndFade(
+                          playNow: false,
+                          animatedBoxKey: titleKey,
+                          IntervalStart: 0.25,
+                          IntervalEnd: 1,
+                          second: 1,
+                          offsetRange: 0.2,
+                          curve: Curves.easeInOut,
+                          transitionType: TransitionType.BottomToTop,
+                          child: Text(
                             "IT Solutions For Your Business",
+                            key: titleKey,
                             style: Fonts.gRubik(
-                                42, MyColor.blackFont, FontWeight.bold),
+                                54, MyColor.blackFont, FontWeight.bold),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   Flexible(
@@ -120,12 +147,24 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                                     //color: Colors.red,
                                     child: Align(
                                       alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "It provides solutions that manage the entireIT service delivery process.",
-                                        style: Fonts.gRubik(
-                                          18,
-                                          MyColor.blackFont,
-                                          FontWeight.normal,
+                                      child: SlideAndFade(
+                                        playNow: false,
+                                        animatedBoxKey: contentKey,
+                                        IntervalStart: 0.50,
+                                        IntervalEnd: 1,
+                                        second: 1,
+                                        offsetRange: 0.1,
+                                        curve: Curves.ease,
+                                        transitionType:
+                                            TransitionType.LeftToRight,
+                                        child: Text(
+                                          "It provides solutions that manage the entireIT service delivery process.",
+                                          key: contentKey,
+                                          style: Fonts.gRubik(
+                                            18,
+                                            MyColor.blackFont,
+                                            FontWeight.normal,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -144,20 +183,32 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                                     //color: Colors.red,
                                     child: Align(
                                       alignment: Alignment.topCenter,
-                                      child: Container(
-                                        height: (widget.laptopWidth != null)
-                                            ? 280
-                                            : 400,
-                                        width: (widget.laptopWidth != null)
-                                            ? 280
-                                            : 400,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                              cardBorderRadius),
-                                          child: Image(
-                                            fit: BoxFit.fitWidth,
-                                            image: AssetImage(
-                                                "/images/pexels2.jpeg"),
+                                      child: SlideAndFade(
+                                        playNow: false,
+                                        animatedBoxKey: imageKey,
+                                        IntervalStart: 0.50,
+                                        IntervalEnd: 1,
+                                        second: 2,
+                                        offsetRange: 0.2,
+                                        curve: Curves.easeInOut,
+                                        transitionType:
+                                            TransitionType.RightToLeft,
+                                        child: Container(
+                                          key: imageKey,
+                                          height: (widget.laptopWidth != null)
+                                              ? 280
+                                              : 400,
+                                          width: (widget.laptopWidth != null)
+                                              ? 280
+                                              : 400,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                                cardBorderRadius),
+                                            child: Image(
+                                              fit: BoxFit.fitWidth,
+                                              image: AssetImage(
+                                                  "/images/pexels2.jpeg"),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -193,6 +244,10 @@ class WhoWeAre_Tablet extends StatefulWidget {
 }
 
 class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
+  final headerKey = GlobalKey();
+  final titleKey = GlobalKey();
+  final imageKey = GlobalKey();
+  final contentKey = GlobalKey();
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
@@ -209,31 +264,42 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
           children: [
             Flexible(
               child: FittedBox(
-                child: Container(
-                  //color: Colors.red,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //color: Colors.red,
-                          Container(
-                            height: 400,
-                            width: 400,
-                            child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(cardBorderRadius),
-                              child: Image(
-                                fit: BoxFit.fitWidth,
-                                image: AssetImage("/images/pexels2.jpeg"),
+                child: SlideAndFade(
+                  playNow: false,
+                  animatedBoxKey: imageKey,
+                  IntervalStart: 0.0,
+                  IntervalEnd: 1,
+                  second: 1,
+                  offsetRange: 0.2,
+                  curve: Curves.easeInOut,
+                  transitionType: TransitionType.BottomToTop,
+                  child: Container(
+                    key: imageKey,
+                    //color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            //color: Colors.red,
+                            Container(
+                              height: 400,
+                              width: 400,
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(cardBorderRadius),
+                                child: Image(
+                                  fit: BoxFit.fitWidth,
+                                  image: AssetImage("/images/pexels2.jpeg"),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -250,15 +316,26 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Flexible(
-                          child: Container(
-                            padding: EdgeInsets.only(right: 40),
-                            // color: Colors.red,
-                            child: Text(
-                              "It provides solutions that manage the entireIT service delivery process.",
-                              style: Fonts.gRubik(
-                                18,
-                                MyColor.blackFont,
-                                FontWeight.normal,
+                          child: SlideAndFade(
+                            playNow: false,
+                            animatedBoxKey: contentKey,
+                            IntervalStart: 0.0,
+                            IntervalEnd: 1,
+                            second: 1,
+                            offsetRange: 0.2,
+                            curve: Curves.easeInOut,
+                            transitionType: TransitionType.LeftToRight,
+                            child: Container(
+                              key: contentKey,
+                              padding: EdgeInsets.only(right: 40),
+                              // color: Colors.red,
+                              child: Text(
+                                "It provides solutions that manage the entireIT service delivery process.",
+                                style: Fonts.gRubik(
+                                  18,
+                                  MyColor.blackFont,
+                                  FontWeight.normal,
+                                ),
                               ),
                             ),
                           ),
@@ -276,25 +353,38 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "// ",
-                                      style: Fonts.gRubik(
-                                          18, MyColor.blue, FontWeight.normal),
-                                    ),
-                                    TextSpan(
-                                      text: "WHO WE ARE ",
-                                      style: Fonts.gRubik(18, MyColor.blackFont,
-                                          FontWeight.normal),
-                                    ),
-                                    TextSpan(
-                                      text: "//",
-                                      style: Fonts.gRubik(
-                                          18, MyColor.blue, FontWeight.normal),
-                                    ),
-                                  ],
+                              SlideAndFade(
+                                playNow: false,
+                                animatedBoxKey: headerKey,
+                                IntervalStart: 0.0,
+                                IntervalEnd: 1,
+                                second: 1,
+                                offsetRange: 0.2,
+                                curve: Curves.easeInOut,
+                                transitionType: TransitionType.BottomToTop,
+                                child: RichText(
+                                  key: headerKey,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "// ",
+                                        style: Fonts.gRubik(18, MyColor.blue,
+                                            FontWeight.normal),
+                                      ),
+                                      TextSpan(
+                                        text: "WHO WE ARE ",
+                                        style: Fonts.gRubik(
+                                            18,
+                                            MyColor.blackFont,
+                                            FontWeight.normal),
+                                      ),
+                                      TextSpan(
+                                        text: "//",
+                                        style: Fonts.gRubik(18, MyColor.blue,
+                                            FontWeight.normal),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -302,12 +392,23 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
                           Row(
                             children: [
                               Flexible(
-                                child: RichText(
-                                  softWrap: true,
-                                  text: TextSpan(
-                                    text: "IT Solutions For Your Business",
-                                    style: Fonts.gRubik(
-                                        42, MyColor.blackFont, FontWeight.bold),
+                                child: SlideAndFade(
+                                  playNow: false,
+                                  animatedBoxKey: titleKey,
+                                  IntervalStart: 0.25,
+                                  IntervalEnd: 1,
+                                  second: 1,
+                                  offsetRange: 0.2,
+                                  curve: Curves.easeInOut,
+                                  transitionType: TransitionType.BottomToTop,
+                                  child: RichText(
+                                    key: titleKey,
+                                    softWrap: true,
+                                    text: TextSpan(
+                                      text: "IT Solutions For Your Business",
+                                      style: Fonts.gRubik(36, MyColor.blackFont,
+                                          FontWeight.bold),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -341,6 +442,10 @@ class WhoWeAre_Mobile extends StatefulWidget {
 class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
   @override
   Widget build(BuildContext context) {
+    final headerKey = GlobalKey();
+    final titleKey = GlobalKey();
+    final imageKey = GlobalKey();
+    final contentKey = GlobalKey();
     return Flexible(
       child: Container(
         //color: Colors.amber[100],
@@ -366,15 +471,26 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           //color: Colors.red,
-                          Container(
-                            height: 300,
-                            width: 300,
-                            child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(cardBorderRadius),
-                              child: Image(
-                                fit: BoxFit.fitWidth,
-                                image: AssetImage("/images/pexels2.jpeg"),
+                          SlideAndFade(
+                            playNow: false,
+                            animatedBoxKey: imageKey,
+                            IntervalStart: 0.0,
+                            IntervalEnd: 1,
+                            second: 1,
+                            offsetRange: 0.2,
+                            curve: Curves.easeInOut,
+                            transitionType: TransitionType.BottomToTop,
+                            child: Container(
+                              key: imageKey,
+                              height: 300,
+                              width: 300,
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(cardBorderRadius),
+                                child: Image(
+                                  fit: BoxFit.fitWidth,
+                                  image: AssetImage("/images/pexels2.jpeg"),
+                                ),
                               ),
                             ),
                           ),
@@ -397,15 +513,26 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Flexible(
-                          child: Container(
-                            padding: EdgeInsets.only(right: 20),
-                            // color: Colors.red,
-                            child: Text(
-                              "It provides solutions that manage the entireIT service delivery process.",
-                              style: Fonts.gRubik(
-                                12,
-                                MyColor.blackFont,
-                                FontWeight.normal,
+                          child: SlideAndFade(
+                            playNow: false,
+                            animatedBoxKey: contentKey,
+                            IntervalStart: 0.0,
+                            IntervalEnd: 1,
+                            second: 1,
+                            offsetRange: 0.2,
+                            curve: Curves.easeInOut,
+                            transitionType: TransitionType.LeftToRight,
+                            child: Container(
+                              key: contentKey,
+                              padding: EdgeInsets.only(right: 20),
+                              // color: Colors.red,
+                              child: Text(
+                                "It provides solutions that manage the entireIT service delivery process.",
+                                style: Fonts.gRubik(
+                                  12,
+                                  MyColor.blackFont,
+                                  FontWeight.normal,
+                                ),
                               ),
                             ),
                           ),
@@ -424,27 +551,38 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Flexible(
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "// ",
-                                        style: Fonts.gRubik(14, MyColor.blue,
-                                            FontWeight.normal),
-                                      ),
-                                      TextSpan(
-                                        text: "WHO WE ARE ",
-                                        style: Fonts.gRubik(
-                                            14,
-                                            MyColor.blackFont,
-                                            FontWeight.normal),
-                                      ),
-                                      TextSpan(
-                                        text: "//",
-                                        style: Fonts.gRubik(14, MyColor.blue,
-                                            FontWeight.normal),
-                                      ),
-                                    ],
+                                child: SlideAndFade(
+                                  playNow: false,
+                                  animatedBoxKey: headerKey,
+                                  IntervalStart: 0.0,
+                                  IntervalEnd: 1,
+                                  second: 1,
+                                  offsetRange: 0.2,
+                                  curve: Curves.easeInOut,
+                                  transitionType: TransitionType.BottomToTop,
+                                  child: RichText(
+                                    key: headerKey,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: "// ",
+                                          style: Fonts.gRubik(14, MyColor.blue,
+                                              FontWeight.normal),
+                                        ),
+                                        TextSpan(
+                                          text: "WHO WE ARE ",
+                                          style: Fonts.gRubik(
+                                              14,
+                                              MyColor.blackFont,
+                                              FontWeight.normal),
+                                        ),
+                                        TextSpan(
+                                          text: "//",
+                                          style: Fonts.gRubik(14, MyColor.blue,
+                                              FontWeight.normal),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -453,12 +591,23 @@ class _WhoWeAre_MobileState extends State<WhoWeAre_Mobile> {
                           Row(
                             children: [
                               Flexible(
-                                child: RichText(
-                                  softWrap: true,
-                                  text: TextSpan(
-                                    text: "IT Solutions For Your Business",
-                                    style: Fonts.gRubik(
-                                        24, MyColor.blackFont, FontWeight.bold),
+                                child: SlideAndFade(
+                                  playNow: false,
+                                  animatedBoxKey: titleKey,
+                                  IntervalStart: 0.25,
+                                  IntervalEnd: 1,
+                                  second: 1,
+                                  offsetRange: 0.2,
+                                  curve: Curves.easeInOut,
+                                  transitionType: TransitionType.BottomToTop,
+                                  child: RichText(
+                                    key: titleKey,
+                                    softWrap: true,
+                                    text: TextSpan(
+                                      text: "IT Solutions For Your Business",
+                                      style: Fonts.gRubik(24, MyColor.blackFont,
+                                          FontWeight.bold),
+                                    ),
                                   ),
                                 ),
                               ),

@@ -1,6 +1,7 @@
 typedef setBool(bool);
 typedef setString(string);
 typedef voidMethod();
+typedef voidMethodAutoScroller(AutoScrollController);
 
 double borderMargin = 300;
 double sideBorderMargin = 90;

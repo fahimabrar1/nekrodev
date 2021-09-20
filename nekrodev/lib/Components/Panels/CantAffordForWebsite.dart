@@ -208,7 +208,7 @@ class _CantAffordForWebsite_TabletState
                 margin: EdgeInsets.only(
                     left: mobileBorderMargin, right: mobileBorderMargin),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 100, bottom: 100),
+                  padding: EdgeInsets.only(top: 100, bottom: 50),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -222,21 +222,20 @@ class _CantAffordForWebsite_TabletState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Flexible(
-                                  flex: 2,
-                                  child: RotationTransition(
-                                    turns: AlwaysStoppedAnimation(-2 / 360),
+                                RotationTransition(
+                                  turns: AlwaysStoppedAnimation(-2 / 360),
+                                  child: FittedBox(
                                     child: Text("Can't Afford For A Website?",
                                         style: Fonts.gRubik(54, MyColor.white,
                                             FontWeight.bold)),
                                   ),
                                 ),
-                                Flexible(
-                                  flex: 1,
-                                  child: RotationTransition(
-                                    turns: AlwaysStoppedAnimation(-2 / 360),
+                                RotationTransition(
+                                  turns: AlwaysStoppedAnimation(-2 / 360),
+                                  child: FittedBox(
                                     child: Container(
-                                      margin: EdgeInsets.only(top: 10),
+                                      margin:
+                                          EdgeInsets.only(top: 10, right: 200),
                                       decoration: BoxDecoration(
                                         color: MyColor.darkblue,
                                         borderRadius: BorderRadius.circular(
@@ -256,9 +255,9 @@ class _CantAffordForWebsite_TabletState
                           ),
                           Flexible(
                             child: Align(
-                              alignment: Alignment.topRight,
+                              alignment: Alignment.center,
                               child: Container(
-                                height: 300,
+                                margin: EdgeInsets.only(top: 50, bottom: 50),
                                 width: 300,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -290,7 +289,6 @@ class _CantAffordForWebsite_TabletState
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 30),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -375,21 +373,20 @@ class _CantAffordForWebsite_MobileState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Flexible(
-                                  flex: 2,
-                                  child: RotationTransition(
-                                    turns: AlwaysStoppedAnimation(-2 / 360),
+                                RotationTransition(
+                                  turns: AlwaysStoppedAnimation(-2 / 360),
+                                  child: FittedBox(
                                     child: Text("Can't Afford For A Website?",
                                         style: Fonts.gRubik(36, MyColor.white,
                                             FontWeight.bold)),
                                   ),
                                 ),
-                                Flexible(
-                                  flex: 1,
-                                  child: RotationTransition(
-                                    turns: AlwaysStoppedAnimation(-2 / 360),
+                                RotationTransition(
+                                  turns: AlwaysStoppedAnimation(-2 / 360),
+                                  child: FittedBox(
                                     child: Container(
-                                      margin: EdgeInsets.only(top: 10),
+                                      margin:
+                                          EdgeInsets.only(top: 10, right: 200),
                                       decoration: BoxDecoration(
                                         color: MyColor.darkblue,
                                         borderRadius: BorderRadius.circular(
@@ -409,9 +406,9 @@ class _CantAffordForWebsite_MobileState
                           ),
                           Flexible(
                             child: Align(
-                              alignment: Alignment.topRight,
+                              alignment: Alignment.center,
                               child: Container(
-                                height: 300,
+                                margin: EdgeInsets.only(top: 50, bottom: 50),
                                 width: 300,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
