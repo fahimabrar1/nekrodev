@@ -71,7 +71,7 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SlideAndFade(
-                          playNow: false,
+                          playNow: true,
                           animatedBoxKey: headerKey,
                           IntervalStart: 0.0,
                           IntervalEnd: 1,
@@ -113,7 +113,7 @@ class _WhoWeAre_DesktopState extends State<WhoWeAre_Desktop> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SlideAndFade(
-                          playNow: false,
+                          playNow: true,
                           animatedBoxKey: titleKey,
                           IntervalStart: 0.25,
                           IntervalEnd: 1,

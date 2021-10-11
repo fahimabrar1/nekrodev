@@ -8,6 +8,7 @@ import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Components/Buttons/RectButton.dart';
 import 'package:nekrodev/NavBar/NavbarItem.dart';
 import 'package:nekrodev/Responsive/Responsive.dart';
+import 'package:nekrodev/Routes/PageRoutesName.dart';
 import '../Components/MyColors.dart';
 import '../Components/MyGlobalVaraibles.dart';
 
@@ -77,9 +78,9 @@ class _NavBarsState extends State<NavBars> {
         decoration: BoxDecoration(color: MyColor.blue, boxShadow: [
           BoxShadow(
             offset: Offset.zero,
-            color: Colors.black26,
-            spreadRadius: 5,
-            blurRadius: 50,
+            color: Colors.black38,
+            spreadRadius: 2,
+            blurRadius: 2,
           )
         ]),
         child: Center(
@@ -215,14 +216,19 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       NavbarItem(
-                          title: "Home",
-                          navBarColorPalette: widget.navBarColorPalette),
+                        title: "Home",
+                        navBarColorPalette: widget.navBarColorPalette,
+                        pageRoutesNames: PageRoutesNames.Home,
+                      ),
                       NavbarItem(
-                          title: "About Us",
-                          navBarColorPalette: widget.navBarColorPalette),
+                        title: "About Us",
+                        navBarColorPalette: widget.navBarColorPalette,
+                        pageRoutesNames: PageRoutesNames.AboutUs,
+                      ),
                       NavbarItem(
-                          title: "Contact Us",
-                          navBarColorPalette: widget.navBarColorPalette),
+                          title: "Pricing",
+                          navBarColorPalette: widget.navBarColorPalette,
+                          pageRoutesNames: PageRoutesNames.Pricing),
                     ],
                   ),
                 ),
@@ -643,7 +649,9 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   color: MyColor.whitehover.withOpacity(0.5),
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, PageRoutesNames.Home);
+                    },
                     title: Material(
                       color: Colors.transparent,
                       child: Center(
@@ -662,7 +670,9 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   color: MyColor.whitehover.withOpacity(0.5),
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, PageRoutesNames.AboutUs);
+                    },
                     title: Material(
                       color: Colors.transparent,
                       child: Center(
@@ -682,6 +692,29 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
                     onTap: () {
+                      Navigator.pushNamed(context, PageRoutesNames.Pricing);
+                    },
+                    title: Material(
+                      color: Colors.transparent,
+                      child: Center(
+                        child: Text(
+                          "Pricing",
+                          style: Fonts.gRubik(widget.FontSize,
+                              MyColor.blackFont, FontWeight.normal),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : Container(),
+          widget.showtiles
+              ? Material(
+                  color: MyColor.whitehover.withOpacity(0.5),
+                  child: ListTile(
+                    hoverColor: MyColor.whitehover,
+                    onTap: () {
+                      // Navigator.pushNamed(context, PageRoutesNames.ContactUS);
+
                       _showContactDialogue();
                     },
                     title: Material(

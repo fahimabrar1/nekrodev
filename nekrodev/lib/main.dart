@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Grid/GridPanel.dart';
 import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
 import 'package:nekrodev/Pages/HomePage.dart';
+import 'package:nekrodev/Routes/PageRoutesName.dart';
 import 'package:nekrodev/Screens/HomeScreen.dart';
 import 'package:nekrodev/Screens/TestScreen.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+import 'Routes/PageRouter.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(MyApp());
 }
 
@@ -15,6 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: PageRoutesNames.Home,
       title: 'NekroDev',
       theme: ThemeData(
         // This is the theme of your application.

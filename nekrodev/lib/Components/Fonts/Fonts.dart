@@ -11,4 +11,13 @@ class Fonts {
       fontWeight: fontWeight,
     );
   }
+
+  static TextStyle robotoMono(
+      double fontSize, Color color, FontWeight fontWeight) {
+    return GoogleFonts.robotoMono(
+      color: color,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+    );
+  }
 }

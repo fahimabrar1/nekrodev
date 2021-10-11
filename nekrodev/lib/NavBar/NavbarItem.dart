@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 import 'package:nekrodev/NavBar/NavBars.dart';
+import 'package:nekrodev/Routes/PageRoutesName.dart';
 
 import '../Components/MyColors.dart';
 
 class NavbarItem extends StatefulWidget {
   final String title;
   final NavBarColorPalette navBarColorPalette;
-  NavbarItem({required this.title, required this.navBarColorPalette, Key? key})
+  final String pageRoutesNames;
+  NavbarItem(
+      {required this.title,
+      required this.navBarColorPalette,
+      required this.pageRoutesNames,
+      Key? key})
       : super(key: key);
 
   @override
@@ -32,7 +38,12 @@ class _NavbarItemState extends State<NavbarItem> {
               onEnter: (Event) => setCol(true),
               onExit: (Event) => setCol(false),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    widget.pageRoutesNames,
+                  );
+                },
                 child: AnimatedContainer(
                   color: (hover)
                       ? widget.navBarColorPalette.hoverColor
