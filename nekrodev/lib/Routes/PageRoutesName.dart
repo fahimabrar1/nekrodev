@@ -3,13 +3,13 @@
 ///
 
 class PageRoutesNames {
-  static const String Home = '/index.html';
+  static const String Home = '/';
 
   //static const String ContactUS = '/contact.html';
 
-  static const String Pricing = '/pricing.html';
+  static const String Pricing = '/pricing';
 
-  static const String AboutUs = '/about.html';
+  static const String AboutUs = '/about';
 }
 
 // class HomeRoutePath {

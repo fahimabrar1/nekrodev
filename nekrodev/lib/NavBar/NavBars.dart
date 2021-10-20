@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Animations/SlideAndFadeAnimations.dart';
@@ -49,7 +49,6 @@ class _NavBarsState extends State<NavBars> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
 
@@ -374,7 +373,6 @@ class _TabletNavBarState extends State<TabletNavBar> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     clicked = widget.isDropDownNavExpanded;
   }
@@ -495,7 +493,6 @@ class _MobileNavbarState extends State<MobileNavbar> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     clicked = widget.isDropDownNavExpanded;
   }
@@ -630,8 +627,8 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
             ? MyColor.whitehover.withOpacity(0.5)
             : MyColor.white,
       ),
-      duration: Duration(milliseconds: 500),
-      height: widget.dropdownNavBar ? 144 : 0,
+      duration: Duration(milliseconds: 520),
+      height: widget.dropdownNavBar ? 200 : 0,
       curve: Curves.easeInOut,
       onEnd: () {
         setState(() {
@@ -650,7 +647,7 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
                     onTap: () {
-                      Navigator.pushNamed(context, PageRoutesNames.Home);
+                      context.router.navigateNamed(PageRoutesNames.Home);
                     },
                     title: Material(
                       color: Colors.transparent,
@@ -671,7 +668,7 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
                     onTap: () {
-                      Navigator.pushNamed(context, PageRoutesNames.AboutUs);
+                      context.router.navigateNamed(PageRoutesNames.AboutUs);
                     },
                     title: Material(
                       color: Colors.transparent,
@@ -692,7 +689,7 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                   child: ListTile(
                     hoverColor: MyColor.whitehover,
                     onTap: () {
-                      Navigator.pushNamed(context, PageRoutesNames.Pricing);
+                      context.router.navigateNamed(PageRoutesNames.Pricing);
                     },
                     title: Material(
                       color: Colors.transparent,

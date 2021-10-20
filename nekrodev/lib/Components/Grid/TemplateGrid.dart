@@ -44,7 +44,6 @@ class _TemplateGridState extends State<TemplateGrid> {
 //  ColorOptions option = ColorOptions.none;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     option = tag[0];

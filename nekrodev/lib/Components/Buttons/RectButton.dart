@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
-import 'package:nekrodev/Components/MyColors.dart';
 import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 
 class RectButton extends StatefulWidget {

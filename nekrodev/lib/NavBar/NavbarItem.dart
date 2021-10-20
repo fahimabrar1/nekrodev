@@ -1,10 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nekrodev/Components/Fonts/Fonts.dart';
 import 'package:nekrodev/Components/MyGlobalVaraibles.dart';
 import 'package:nekrodev/NavBar/NavBars.dart';
-import 'package:nekrodev/Routes/PageRoutesName.dart';
-
 import '../Components/MyColors.dart';
 
 class NavbarItem extends StatefulWidget {
@@ -39,10 +38,7 @@ class _NavbarItemState extends State<NavbarItem> {
               onExit: (Event) => setCol(false),
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    widget.pageRoutesNames,
-                  );
+                  context.router.navigateNamed(widget.pageRoutesNames);
                 },
                 child: AnimatedContainer(
                   color: (hover)

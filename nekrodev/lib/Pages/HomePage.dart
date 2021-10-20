@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nekrodev/Animations/SlideAndFadeAnimations.dart';
 import 'package:nekrodev/Components/Footer/Footer.dart';
 import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
 import 'package:nekrodev/Components/Panels/AdvancedInnovation.dart';
@@ -11,7 +10,6 @@ import 'package:nekrodev/Components/Panels/PricingPanel.dart';
 import 'package:nekrodev/Components/Panels/ServicesPanel.dart';
 import 'package:nekrodev/Components/Panels/WhoWeArePanel.dart';
 import 'package:nekrodev/NavBar/NavBars.dart';
-import 'package:nekrodev/Pages/Testpage.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 /// HomePage is the Landing Page
@@ -31,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   final listkey = GlobalKey();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = AutoScrollController(
         //add this for advanced viewport boundary. e.g. SafeArea

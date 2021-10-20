@@ -353,37 +353,39 @@ class _WhoWeAre_TabletState extends State<WhoWeAre_Tablet> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SlideAndFade(
-                                playNow: false,
-                                animatedBoxKey: headerKey,
-                                IntervalStart: 0.0,
-                                IntervalEnd: 1,
-                                second: 1,
-                                offsetRange: 0.2,
-                                curve: Curves.easeInOut,
-                                transitionType: TransitionType.BottomToTop,
-                                child: RichText(
-                                  key: headerKey,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "// ",
-                                        style: Fonts.gRubik(18, MyColor.blue,
-                                            FontWeight.normal),
-                                      ),
-                                      TextSpan(
-                                        text: "WHO WE ARE ",
-                                        style: Fonts.gRubik(
-                                            18,
-                                            MyColor.blackFont,
-                                            FontWeight.normal),
-                                      ),
-                                      TextSpan(
-                                        text: "//",
-                                        style: Fonts.gRubik(18, MyColor.blue,
-                                            FontWeight.normal),
-                                      ),
-                                    ],
+                              Flexible(
+                                child: SlideAndFade(
+                                  playNow: false,
+                                  animatedBoxKey: headerKey,
+                                  IntervalStart: 0.0,
+                                  IntervalEnd: 1,
+                                  second: 1,
+                                  offsetRange: 0.2,
+                                  curve: Curves.easeInOut,
+                                  transitionType: TransitionType.BottomToTop,
+                                  child: RichText(
+                                    key: headerKey,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: "// ",
+                                          style: Fonts.gRubik(18, MyColor.blue,
+                                              FontWeight.normal),
+                                        ),
+                                        TextSpan(
+                                          text: "WHO WE ARE ",
+                                          style: Fonts.gRubik(
+                                              18,
+                                              MyColor.blackFont,
+                                              FontWeight.normal),
+                                        ),
+                                        TextSpan(
+                                          text: "//",
+                                          style: Fonts.gRubik(18, MyColor.blue,
+                                              FontWeight.normal),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

@@ -77,7 +77,6 @@ class _SlideAndFadeState extends State<SlideAndFade>
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     if (widget.playNow != null && widget.playNow == true) {
       _controller..forward();
