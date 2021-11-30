@@ -13,7 +13,7 @@ class _FooterState extends State<Footer> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      height: 300,
+      height: 80,
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:nekrodev/Components/Footer/Footer.dart';
 import 'package:nekrodev/Components/Grid/TemplateGrid.dart';
 import 'package:nekrodev/Components/Panels/AdvancedInnovation.dart';
 import 'package:nekrodev/Components/Panels/CantAffordForWebsite.dart';
+import 'package:nekrodev/Components/Panels/ClientsCarousel.dart';
 import 'package:nekrodev/Components/Panels/PricingPanel.dart';
 import 'package:nekrodev/Components/Panels/ServicesPanel.dart';
 import 'package:nekrodev/Components/Panels/WhoWeArePanel.dart';
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       index: 5,
                       child: TemplateGrid(),
                     ),
-                    PricingPanel(),
+                    ClientCarosel(),
                     Footer(),
                   ],
                 ),

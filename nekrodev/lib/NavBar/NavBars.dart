@@ -295,7 +295,7 @@ class _DeskTopNavBarState extends State<DeskTopNavBar> {
                             16, MyColor.blackFont, FontWeight.normal),
                       ),
                       TextSpan(
-                        text: ' 01687056140!',
+                        text: ' 01744409931!',
                         style: Fonts.gRubik(
                             16, MyColor.blackFont, FontWeight.normal),
                       ),
@@ -768,7 +768,7 @@ class _DropdowNavbarState extends State<DropdowNavbar> {
                             16, MyColor.blackFont, FontWeight.normal),
                       ),
                       TextSpan(
-                        text: ' 01687056140!',
+                        text: ' 01744409931!',
                         style: Fonts.gRubik(
                             16, MyColor.blackFont, FontWeight.normal),
                       ),

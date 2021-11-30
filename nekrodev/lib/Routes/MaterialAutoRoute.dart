@@ -2,6 +2,7 @@
 // @AdaptiveAutoRouter
 // @CustomAutoRouter
 import 'package:auto_route/auto_route.dart';
+import 'package:nekrodev/Components/Panels/ClientsCarousel.dart';
 import 'package:nekrodev/Routes/PageRoutesName.dart';
 import 'package:nekrodev/Screens/AboutUsScreen.dart';
 import 'package:nekrodev/Screens/HomeScreen.dart';
